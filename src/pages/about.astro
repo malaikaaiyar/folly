@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro"
+import { site } from "../site"
+import { getCollection, getEntry } from 'astro:content';
+import Back from "../components/Back.astro"
+import Header from "../components/Header.astro"
+
+const page = await getEntry('pages', 'about')
+const { Content, headings } = await page.render();
+const authors = await getCollection('authors')
+---
+<Layout title={site.pages.about.title} desc={site.pages.about.description}>
+
+  <article>
+  <Header
+    title={page.data.title}
+    description={page.data.description}
+    created={page.data.created}
+    updated={page.data.updated}
+   />
+    <Content />
+    <div>
+      <h2 id="authors">Authors</h2>
+      <div class="authors-list">
+        {
+          authors.map((a) => (
+            <div class="author-list-item">
+              <div class="author-heading">
+                <h3 class="author-name">{a.data.name}<h3>
+                <p class="author-bio">{a.data.bio}</p>
+              </div>
+
+              <div class="author-details">
+                { a.data.website && <a target="_blank" href={a.data.website}>{a.data.website}</a> }
+                { a.data.email && <a href={`mailto:${a.data.email}`}>{a.data.email}</a> }
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </article>
+</Layout>
+                          

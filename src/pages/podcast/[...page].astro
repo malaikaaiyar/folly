@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import { site } from "../../site"
+import { sortedPodcasts } from "../../utils"
+import Podcast from "../../components/Podcast.astro"
+import Paginator from "../../components/Paginator.astro"
+
+export async function getStaticPaths({ paginate }) {
+  return paginate(sortedPodcasts, { pageSize: 9 });
+}
+const { page } = Astro.props;
+const params = Astro.params;
+
+---
+<Layout title={site.pages.podcast.title} desc={site.pages.podcast.description}>
+<div class="podcasts-list">
+  {
+  page.data?.map((c) => (
+    <Podcast title={c.data.title} description={c.data.description} date={c.data.created.toISOString().slice(0, 10)} href={`podcast/${c.slug}`} />
+    ))
+  }
+</div>
+  <Paginator
+    previous={page.url.prev}
+    current={page.currentPage}
+    next={page.url.next}
+  />
+
+</Layout>

@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import Header from "../../components/Header.astro"
+
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('podcasts');
+  return entries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<Layout title={entry.data.title} desc={entry.data.description}> 
+   <article>
+      <Header 
+        title={entry.data.title}
+        description={entry.data.description}
+        created={entry.data.created.toISOString().slice(0, 10)} />
+    <Content />
+ </article>
+</Layout>
+

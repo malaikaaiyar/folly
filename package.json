@@ -1,0 +1,19 @@
+{
+  "name": "kilde",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.5",
+    "@jsdevtools/rehype-url-inspector": "^2.0.2",
+    "astro": "^4.7.1",
+    "markdown-it": "^14.1.0",
+    "sanitize-html": "^2.13.0"
+  }
+}

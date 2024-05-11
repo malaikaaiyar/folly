@@ -1,0 +1,27 @@
+---
+import { site } from "../site"
+import { featuredArticles, sortedArticles } from "../utils" 
+import Card from "../components/Card.astro"
+import Layout from "../layouts/Layout.astro"
+import Hero from "../components/Hero.astro"
+
+
+---
+<Layout title={site.pages.index.title} desc={site.pages.index.description}>
+<div class="cards-featured-grid">
+  {
+  featuredArticles.slice(0, 2).map((c) => (
+	    <Card title={c.data.title} description={c.data.description} date={c.data.created.toISOString().slice(0, 10)} href={c.slug} />
+    ))
+  }
+</div>
+	<Hero title="Kilde" />
+<div class="cards-grid">
+  {
+  sortedArticles.map((c) => (
+	    <Card title={c.data.title} description={c.data.description} date={c.data.created.toISOString().slice(0, 10)} href={c.slug} />
+
+    ))
+  }
+</div>
+</Layout>

@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+
+import Layout from "../../layouts/Layout.astro"
+import Card from "../../components/Card.astro"
+import Paginator from "../../components/Paginator.astro"
+
+export async function getStaticPaths() {
+  const all = await getCollection('articles', ({ data }) => {
+    return data.published == true;
+  })
+
+  const tags: string[] = [];
+
+  all.forEach((post) => {
+    post.data.tags.forEach((tag) => {
+      tags.push(tag.toLowerCase());
+    });
+  });
+
+  return Array.from(new Set(tags)).map((tag) => {
+    return {
+      params: { tag },
+      props: {
+        tag,
+        posts: all.filter((post) =>
+          post.data.tags.map((tag) => tag.toLowerCase()).includes(tag)
+        ),
+      },
+    };
+  });
+}
+
+const { tag, posts } = Astro.props;
+---
+<Layout title="something" desc="something">
+    <h1>Articles with the #{tag} tag</h1>
+    <div class="cards-grid">
+      {
+        posts.map((post) => (
+            <Card title={post.data.title} description={post.data.description} date={post.data.created.toISOString().slice(0, 10)} href={post.slug} />
+
+        ))
+      }
+      </div>
+</Layout>

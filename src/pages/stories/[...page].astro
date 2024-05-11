@@ -1,0 +1,30 @@
+---
+import { site } from "../../site"
+import { sortedArticles } from "../../utils" 
+import Layout from "../../layouts/Layout.astro"
+import Card from "../../components/Card.astro"
+import Paginator from "../../components/Paginator.astro"
+
+export async function getStaticPaths({ paginate }) {
+  return paginate(sortedArticles, { pageSize: 18 }); // change the `pageSize` number to change the number of articles presented on each page
+}
+const { page } = Astro.props;
+const params = Astro.params;
+
+---
+<Layout title={site.pages.stories.title} desc={site.pages.stories.description}>
+
+<div class="cards-grid">
+  {
+  page.data?.map((c) => (
+    <Card title={c.data.title} description={c.data.description} date={c.data.created.toISOString().slice(0, 10)} href={c.slug} />
+    ))
+  }
+</div>
+  <Paginator
+    previous={page.url.prev}
+    current={page.currentPage}
+    next={page.url.next}
+  />
+
+</Layout>

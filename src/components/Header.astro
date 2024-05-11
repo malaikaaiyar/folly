@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  created: string;
+  updated: string;
+  author: string;
+}
+
+const { title, description, author, created, updated } = Astro.props
+---
+<header>
+  <div class="header-heading">
+    <h1 class="header-title">{title}</h1>
+    <p class="header-description">{description}</p>
+  </div>
+
+  <div class="header-details">
+    { author && <p class="header-author">author: <a target="_blank" href={`/about#authors`}>{author}</a></p>}
+    { created && <p class="header-date">created: {created}</p> }
+    {
+      updated && created != updated && <p class="header-date">updated: {updated}</p>
+    }
+  </div>
+</header>

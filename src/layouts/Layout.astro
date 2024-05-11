@@ -1,0 +1,48 @@
+---
+import Navigation from "../components/Navigation.astro"
+import Footer from "../components/Footer.astro"
+import { site } from "../site"
+
+interface Props {
+	title: string;
+	desc: string;
+}
+
+const { title, desc } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+ <head>
+
+    <meta charset="UTF-8" />
+    <meta name="description" content={desc} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={desc} />
+		<meta name="author" content={site.author} />
+
+    <link rel="stylesheet" href="/css/global.css" />
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={desc} />
+		
+   
+		<title>{title} | {site.title}</title>
+  </head>
+	<body>
+  <Navigation />
+		<main>
+			<slot />
+		</main>
+  <Footer />
+	</body>
+</html>
+

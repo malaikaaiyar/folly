@@ -1,0 +1,11 @@
+---
+import { site } from "../site"
+
+---
+<nav>
+{
+  site.navigation.map((l) => (
+    <a href={l.url}>{l.title}</a>
+  ))
+}
+</nav>
