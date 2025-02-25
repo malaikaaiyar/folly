@@ -2,8 +2,6 @@ import { defineConfig } from "astro/config";
 import { site } from "./src/site";
 import inspectUrls from "@jsdevtools/rehype-url-inspector";
 
-import vercel from "@astrojs/vercel";
-
 // https://astro.build/config
 export default defineConfig({
   markdown: {
@@ -26,6 +24,4 @@ export default defineConfig({
       // ...other markdown configuration options
     ],
   },
-
-  adapter: vercel(),
 });
