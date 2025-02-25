@@ -3,17 +3,6 @@ import { site } from "../site"
 const date = new Date().getFullYear()
 ---
 <footer>
-  <div class="footer-links">
-    {
-      site.footer.map((l) => (
-        <a href={l.url} target="_blank">{l.title}</a>
-      ))
-    }
   </div>
-  <div class="footer-copyright">
-    <p>©</p>
-    <p>{date}</p>
-    <p>kilde</p>
-  </div>
-    <p class="essens">by <a target="_blank" href="https://essens.cc">essens</a></p>
+    <p class="essens">website by <a target="_blank" href="https://essens.cc">essens</a> and <a target="_blank" href="https://malaikaaiyar.me">malaika</a></p>
 </footer>
