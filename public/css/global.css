@@ -12,8 +12,8 @@
 }
 
 :root {
-  --light: #f8f9fc;
-  --dark: #111213;
+  --light: #FFFFEC;
+  --dark: #02330C;
   --accent: #0072f5;
 
   --space-xs: 0.25rem;
@@ -29,7 +29,7 @@
 
   --padding-button: 0.25rem 0.8rem;
 
-  font-family: Inter, sans-serif;
+  font-family: Hedvig Letters Serif, serif;
   font-feature-settings:
     "liga" 1,
     "calt" 1; /* fix for Chrome */
@@ -37,12 +37,13 @@
 
 @supports (font-variation-settings: normal) {
   :root {
-    font-family: InterVariable, sans-serif;
+    font-family: Hedvig Letters Serif, serif;
   }
 }
 
 html {
   background: var(--light);
+  color: var(--dark);
 }
 
 body {
@@ -54,6 +55,7 @@ body {
   justify-content: space-between;
   margin: auto;
   padding: 1rem;
+  color: var(--dark);
 }
 
 main {
@@ -62,6 +64,16 @@ main {
   flex-direction: column;
   gap: 2rem;
 }
+
+.w-80 {
+  width: 80%;
+  margin: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
 
 .hero {
   display: flex;
