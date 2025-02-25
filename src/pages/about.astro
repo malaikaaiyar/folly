@@ -19,26 +19,41 @@ const authors = await getCollection('authors')
     updated={page.data.updated}
    />
     <Content />
-    <div>
-      <h2 id="authors">Authors</h2>
-      <div class="authors-list">
-        {
-          authors.map((a) => (
-            <div class="author-list-item">
-              <div class="author-heading">
-                <h3 class="author-name">{a.data.name}<h3>
-                <p class="author-bio">{a.data.bio}</p>
-              </div>
-
-              <div class="author-details">
-                { a.data.website && <a target="_blank" href={a.data.website}>{a.data.website}</a> }
-                { a.data.email && <a href={`mailto:${a.data.email}`}>{a.data.email}</a> }
-              </div>
-            </div>
-          ))
-        }
+    <div class="about-content">
+      <div class="editorial-section">
+        <h2 id="authors">Editorial</h2>
+        <br>
+        <p>Charlie Goldberg</p>
+        <br>
+        <p>Faye Chang</p>
+        <br>
+        <p>Olivier Berg</p>
+        <br>
+        <p>Geo Maur-Batsaki</p>
+        <br>
+        <p>Jiayue Shi</p>
+        <br>
+        <p>Hassan Akram</p>
+        <br>
+        <p>Morien Robertson</p>
+        <br>  
+        <p>Lara Machado</p>
+        <br>
+        <h2 id="authors">Design</h2>
+        <br>
+        <p>Malaika Aiyar</p>
+        <br>
+        <p>Niamh Durnin</p>
+        <br>
+        <p>Moli Birkinshaw</p>
+        <br>
+        <p>Zander Fitzgerald</p>
+      </div>
+      <div class="image-section">
+        <img src="images/oxford-sketch.png" alt="Oxford sketch" class="oxford-image">
       </div>
     </div>
   </article>
 </Layout>
+
                           
