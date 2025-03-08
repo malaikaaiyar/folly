@@ -5,7 +5,7 @@ import { site } from "../../site";
 
 // Get all stories and sort them by date
 export async function getStaticPaths({ paginate }) {
-  const allStories = await getCollection("stories");
+  const allStories = await getCollection("articles");
   
   // Sort stories by date if available, otherwise don't sort
   const sortedStories = allStories.sort((a, b) => {
