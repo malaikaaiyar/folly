@@ -9,6 +9,7 @@ const articlesCollection = defineCollection({
     author: z.string(),
     category: z.string(),
     published: z.boolean().default(false),
+    pubDate: z.coerce.date().optional(),
   }),
 });
 
