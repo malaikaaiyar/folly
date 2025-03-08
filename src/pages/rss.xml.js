@@ -13,7 +13,7 @@ export async function GET(context) {
     site: "https://essens.dev",
     items: articles.map((a) => ({
       title: a.data.title,
-      pubDate: "lol",
+      pubDate: "2024-03-08",
       link: `/${a.slug}/`,
       content: sanitizeHtml(parser.render(a.body)),
     })),
