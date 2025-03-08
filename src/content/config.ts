@@ -2,22 +2,13 @@
 import { z, reference, defineCollection } from "astro:content";
 
 // 2. Define a `type` and `schema` for each collection
-const articles = defineCollection({
-  type: "content", // v2.5.0 and later
+const articlesCollection = defineCollection({
+  type: 'content',
   schema: z.object({
     title: z.string(),
-    description: z.string().optional(),
-    created: z.string().transform((str) => new Date(str)),
-    updated: z
-      .string()
-      .transform((str) => new Date(str))
-      .optional(),
-    published: z.boolean().optional().default(false),
-    featured: z.boolean().default(false),
-    tags: z.array(z.string()),
-    imageUrl: z.string(),
-    author: reference("authors"),
-    relatedArticles: z.array(reference("articles")).optional(),
+    author: z.string(),
+    category: z.string(),
+    published: z.boolean().default(false),
   }),
 });
 
@@ -52,7 +43,7 @@ const pages = defineCollection({
 
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
-  articles,
+  'articles': articlesCollection,
   authors,
   podcasts,
   pages,

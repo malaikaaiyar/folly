@@ -7,7 +7,8 @@ export const site = {
   // Navigation — contains titles and links for the menu bar on the top:
   navigation: [
     { title: "home", url: "/" },
-    { title: "stories", url: "/stories" },
+    // { title: "Magazine", url: "/stories" },
+    { title: "Magazine", url: "/articles" },
     // { title: "podcast", url: "/podcast" },
     { title: "about", url: "/about" },
     // { title: "support", url: "/support" },
@@ -31,9 +32,13 @@ export const site = {
       title: "Home",
       description: "Home page for the Folly Magazine",
     },
-    stories: {
-      title: "Stories",
-      description: "Everything we've ever written",
+    // stories: {
+    //   title: "Magazine",
+    //   description: "Everything we've ever written",
+    // },
+    articles: {
+      title: "Magazine",
+      description: "Read Folly Magazine",
     },
     // If you want to get rid of the podcast section, remove it here, from Navigation section above, as well as delete the "src/pages/podcast" folder
     // podcast: {
@@ -49,4 +54,22 @@ export const site = {
       description: "Support independent media",
     },
   },
+  
+  // Articles list with published status
+  articles: [
+    {
+      title: "On the Imminent Death of My Grandfather",
+      author: "Hannah Wei",
+      category: "Poetry",
+      url: "/articles/imminent-death-grandfather",
+      published: true
+    },
+    {
+      title: "Built on Quicksand",
+      author: "Olivier Berg",
+      category: "Analysis",
+      url: "/articles/built-on-quicksand",
+      published: false
+    }
+  ]
 };

@@ -1,0 +1,75 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+// Generate static paths for all published articles
+export async function getStaticPaths() {
+  const articlesEntries = await getCollection("articles");
+  
+  return articlesEntries
+    .filter(article => article.data.published)
+    .map(article => ({
+      params: { slug: article.slug },
+      props: { article },
+    }));
+}
+
+// Get the article data from props
+const { article } = Astro.props;
+
+// Render the article content
+const { Content } = await article.render();
+---
+
+<Layout title={article.data.title}>
+  <main>
+    <article>
+      <header>
+        <h1>{article.data.title}</h1>
+        <p class="article-meta">By {article.data.author} | {article.data.category}</p>
+      </header>
+      
+      <div class="article-content">
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+  }
+  
+  header {
+    margin-bottom: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .article-meta {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .article-content {
+    line-height: 1.4;
+    font-size: 1rem;
+  }
+  
+  .article-content :global(h2) {
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .article-content :global(p) {
+    margin-bottom: 0.75rem;
+  }
+</style> 
