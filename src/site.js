@@ -10,7 +10,7 @@ export const site = {
     // { title: "Magazine", url: "/stories" },
     { title: "Magazine", url: "/articles" },
     // { title: "podcast", url: "/podcast" },
-    { title: "about", url: "/about" },
+    { title: "Masthead", url: "/about" },
     // { title: "support", url: "/support" },
   ],
 
@@ -46,7 +46,7 @@ export const site = {
     //   description: "Our little tiny podcast",
     // },
     about: {
-      title: "About",
+      title: "Masthead",
       description: "A short story of the project or whatever",
     },
     support: {

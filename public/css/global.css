@@ -222,6 +222,7 @@ nav {
   border-bottom: var(--border);
   text-transform: uppercase;
   font-weight: 500;
+  z-index: 1000;
 }
 
 footer {
