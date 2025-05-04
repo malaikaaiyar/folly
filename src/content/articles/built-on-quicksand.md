@@ -1,6 +1,6 @@
 ---
 title: "Built on Quicksand"
-author: "Olivier Berg and Charlie Goldberg"
+author: "Olivier Berg"
 category: "Analysis"
 published: true
 pubDate: 2023-11-20
