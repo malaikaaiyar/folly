@@ -8,7 +8,7 @@ export const site = {
   navigation: [
     { title: "home", url: "/" },
     // { title: "Magazine", url: "/stories" },
-    { title: "Magazine", url: "/articles" },
+    { title: "Magazine", url: "/magazine" },
     // { title: "podcast", url: "/podcast" },
     { title: "Masthead", url: "/about" },
     // { title: "support", url: "/support" },
@@ -36,7 +36,7 @@ export const site = {
     //   title: "Magazine",
     //   description: "Everything we've ever written",
     // },
-    articles: {
+    magazine: {
       title: "Magazine",
       description: "Read Folly Magazine",
     },
@@ -55,21 +55,4 @@ export const site = {
     },
   },
   
-  // Articles list with published status
-  articles: [
-    {
-      title: "On the Imminent Death of My Grandfather",
-      author: "Hannah Wei",
-      category: "Poetry",
-      url: "/articles/imminent-death-grandfather",
-      published: true
-    },
-    {
-      title: "Built on Quicksand",
-      author: "Olivier Berg",
-      category: "Analysis",
-      url: "/articles/built-on-quicksand",
-      published: false
-    }
-  ]
 };
