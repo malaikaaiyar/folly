@@ -1,6 +1,6 @@
 ---
 title: "Built on Quicksand"
-author: "Olivier Berg"
+author: "Olivier Berg and Charlie Goldberg"
 category: "Analysis"
 published: true
 pubDate: 2023-11-20
@@ -20,6 +20,7 @@ The childcare benefits scandal (*toeslagenaffaire*) was a massive political scan
 ## Position Omtzigt, function elsewhere
 
 Pieter Omtzigt was known for his meticulous research, earning the nickname, literally translated, the “dossier eater” (*dossiervreter*), and his willingness to challenge his own party leadership. This made him a liability to his party’s establishment; his party, CDA (Christian Democratic Appeal), was a member of the coalition he helped bring down when he brought attention to the childcare benefit scandal. Party tensions were demonstrated when Omtzigt narrowly lost the leadership election for the CDA to Hugo de Jonge. De Jonge resigned shortly afterward as leader, but rather than the leadership being given to Omtzigt, Wopke Hoekstra was coronated. According to a leaked internal memo written by Omtzigt, Omtzigt was promised that the leadership would have been offered to him instead of Wopke Hoekstra. The memo also claimed that Omtzigt had been the target of derogatory remarks from party colleagues, parliamentary staff and other MPs calling him a “psychopath”, a “sick man”, a “tuberculosis dog” (a common Dutch insult), “dickhead”, “crazy”, and “mentally unstable”.   
+
 In the March 2021 election, Omtzigt earned 342,472 preference-votes, almost as much as the party leader Wopke Hoekstra, who received 437,240. The Netherlands has a party-list electoral system, where parties receive seats in proportion to the number of votes they get. Voters can also cast a preference-vote for a specific candidate on the party-list. If that candidate gains enough preference-votes, they can move ahead of others on the list and still get a seat. It is highly unusual for the candidate who is second on the party list to receive almost as many votes as the party leader. Omtzigt gained so many preference-votes because of his work in uncovering the childcare benefits scandal, but this created significant tension between him and party leadership.  
 
 After the election, as coalition negotiations were underway, an internal memo by Kajsa Ollongren, a key figure in the ongoing negotiations – was made public. A press photographer had captured a picture of her walking out of parliament carrying a sheaf of papers, part of which was still readable. Ollongren had rushed out of the building because of a positive COVID-19 test. The memo included: “Position Omtzigt, function elsewhere”. It seemed as if CDA leadership and former prime minister Mark Rutte, the leader of the VVD (People’s Party for Freedom and Democracy), were actively trying to sideline the Omtzigt. Rutte denied speaking about Omtzigt. And, when notes were made public showing that Rutte had indeed discussed Omtzigt, he said that he had “no active recollection” of it. This was a trick Rutte’s employed often: claiming forgetfulness when he lies in parliament.  
