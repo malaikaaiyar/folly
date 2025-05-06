@@ -46,6 +46,10 @@ html {
   color: var(--dark);
 }
 
+.folly-art {
+  margin-top: -30px !important;
+}
+
 body {
   min-height: 100vh;
   max-width: 80rem;
