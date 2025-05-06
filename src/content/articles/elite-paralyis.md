@@ -1,6 +1,6 @@
 ---
 title: "Elite Paralysis"
-author: ""
+author: "The Editors"
 category: "Editor's Note"
 published: true
 pubDate: 2025-03-08
