@@ -1,52 +1,223 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import { site } from "../site"
-import { getCollection, getEntry } from 'astro:content';
-import Back from "../components/Back.astro"
-import Header from "../components/Header.astro"
-
-const page = await getEntry('pages', 'about')
-const { Content, headings } = await page.render();
-const authors = await getCollection('authors')
 ---
+
 <Layout title={site.pages.about.title} desc={site.pages.about.description}>
-
-  <article>
-  <Header
-    title={page.data.title}
-    description={page.data.description}
-    created={page.data.created}
-    updated={page.data.updated}
-   />
-    <Content />
-    <div class="about-content">
-      <div class="editorial-section">
-        <h3 id="authors">Editorial</h3>
-        <hr>
-        <br>
-        <p><i>Charlie Goldberg</i></p>
-        <p><i>Faye Chang</i></p>
-        <p><i>Olivier Berg</i></p>
-        <p><i>Geo Maur-Batsaki</i></p>
-        <p><i>Jiayue Shi</i></p>
-        <p><i>Hassan Akram</i></p>
-        <p><i>Morien Robertson</i></p>
-        <p><i>Lara Machado</i></p>
-
-
-        <h3 id="authors">Design</h3>
-        <hr>
-        <br>
-        <i><p>Malaika Aiyar</p>
-        <p>Niamh Durnin</p>
-        <p>Moli Birkinshaw</p>
-        <p>Zander Fitzgerald</p></i>
+  <div class="about-page">
+    <div class="about-container">
+      <h1 class="about-title">About</h1>
+      
+      <div class="section">
+        <div class="section-divider"></div>
+        <h2 class="section-title">What is Folly Magazine</h2>
+        <p class="section-content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend eu purus ac elementum. Fusce enim metus, sagittis vitae libero eu, laoreet porttitor neque. Mauris et quam gravida, condimentum dolor sit amet, tempus augue. Donec vel dolor ac ligula tincidunt convallis. Maecenas sodales diam id convallis finibus. Proin ut purus sapien. Aenean sodales dui justo, et finibus nunc cursus non. In a metus pretium magna consectetur congue. Vestibulum massa nulla, ornare non enim non, ultricies efficitur mi. Maecenas rutrum vestibulum elit at vulputate. Phasellus ullamcorper, nisi vel scelerisque rutrum, tellus lacus molestie arcu, nec sagittis nunc ipsum et ex.
+        </p>
       </div>
-      <div class="image-section">
-        <img src="images/oxford-sketch.png" alt="Oxford sketch" class="oxford-image">
+
+      <div class="section">
+        <div class="section-divider"></div>
+        <h2 class="section-title">Masthead</h2>
+        <div class="masthead-content">
+          <div class="masthead-entry">
+            <span class="name">Charlie Goldberg</span>
+            <span class="dots">.................................................................</span>
+            <span class="role">Editor</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Faye Chang</span>
+            <span class="dots">............................................................................................................................................</span>
+            <span class="role">Editor</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Olivier Berg</span>
+            <span class="dots">................................................................................................................................</span>
+            <span class="role">Editor</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Geo Maur-Batsaki</span>
+            <span class="dots">................................................................................................................................</span>
+            <span class="role">Editor</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Jiayue Shi</span>
+            <span class="dots">................................................................................................................................</span>
+            <span class="role">Editor</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Hassan Akram</span>
+            <span class="dots">................................................................................................................................</span>
+            <span class="role">Editor</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Morien Robertson</span>
+            <span class="dots">................................................................................................................................</span>
+            <span class="role">Editor</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Lara Machado</span>
+            <span class="dots">................................................................................................................................</span>
+            <span class="role">Editor</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Malaika Aiyar</span>
+            <span class="dots">................................................................................................................................</span>
+            <span class="role">Web Design</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Niamh Durnin</span>
+            <span class="dots">................................................................................................................................</span>
+            <span class="role">Design</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Moli Birkinshaw</span>
+            <span class="dots">................................................................................................................................</span>
+            <span class="role">Design</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Zander Fitzgerald</span>
+            <span class="dots">................................................................................................................................</span>
+            <span class="role">Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-divider"></div>
+        <h2 class="section-title">Submit to the magazine</h2>
+        <p class="section-content">
+          If you want to be in our next issue, please fill out this form.
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-divider"></div>
+        <h2 class="section-title">Join the team</h2>
+        <p class="section-content">
+          We're looking for an events officer, editors, and designers. Please fill out this form if you're interested.
+        </p>
       </div>
     </div>
-  </article>
+  </div>
 </Layout>
+
+<style>
+  .about-page {
+    background: var(--light);
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+
+  .about-container {
+    max-width: 80vw;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .about-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 5rem;
+    font-weight: 400;
+    text-align: center;
+    color: var(--dark);
+    margin: 0 0 4rem 0;
+    line-height: 1;
+  }
+
+  .section {
+    margin-bottom: 4rem;
+    position: relative;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 3px;
+    background: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Alata', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--accent);
+    margin: 0 0 2rem 0;
+    line-height: 1;
+  }
+
+  .section-content {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--dark);
+    max-width: 744px;
+    text-align: justify;
+    margin: 0;
+  }
+
+  .masthead-content {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--dark);
+    max-width: 744px;
+  }
+
+  .masthead-entry {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 0.625rem;
+    overflow: hidden;
+  }
+
+  .masthead-entry:last-child {
+    margin-bottom: 0;
+  }
+
+  .name {
+    flex-shrink: 0;
+    font-weight: 400;
+  }
+
+  .dots {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 0.25rem;
+    font-weight: 400;
+  }
+
+  .role {
+    flex-shrink: 0;
+    font-style: italic;
+  }
+
+  @media (max-width: 80rem) {
+    .about-container {
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-title {
+      font-size: 3rem;
+    }
+    
+    .section {
+      margin-bottom: 3rem;
+    }
+    
+    .masthead-entry {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+    
+    .dots {
+      display: none;
+    }
+  }
+</style>
 
                           

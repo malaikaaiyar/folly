@@ -1,12 +1,326 @@
 ---
 import { site } from "../site"
 import Layout from "../layouts/Layout.astro"
-
-
+import MagazineSection from "../components/MagazineSection.astro"
 ---
+
 <Layout title={site.pages.index.title} desc={site.pages.index.description}>
-<img class="folly-art w-full max-w-60 sm:max-w-80" src="/images/folly-art.png" alt="Folly Bridge Sketch" />
-<p class="text-center">
-    Folly is an Oxford student magazine publishing long-form creative work in literature, politics, and the arts. Read the first issue <a href="/magazine">here</a>.
-  </p>
-  </Layout>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-graphics">
+        <!-- Decorative graphics placeholder -->
+        <img src="/images/oxford-sketch.png" alt="Oxford Illustration" class="hero-illustration" />
+      </div>
+      <h1 class="hero-title">FOLLY MAGAZINE</h1>
+      <p class="hero-subtitle">
+        An Oxford student magazine publishing long-form creative work in literature, politics, and the arts.
+      </p>
+    </div>
+  </section>
+
+  <!-- Magazine Content Section -->
+  <MagazineSection />
+</Layout>
+
+<script>
+  // Enhanced scroll effects
+  function initScrollEffects() {
+    const heroContent = document.querySelector('.hero-content') as HTMLElement;
+    const heroGraphics = document.querySelector('.hero-graphics') as HTMLElement;
+    const heroSection = document.querySelector('.hero-section') as HTMLElement;
+    
+    if (!heroContent || !heroGraphics || !heroSection) return;
+    
+    let ticking = false;
+    
+    function updateScrollEffects() {
+      const scrollY = window.scrollY;
+      const heroHeight = heroSection.offsetHeight;
+      const scrollProgress = Math.min(scrollY / heroHeight, 1);
+      
+      // Parallax effect for hero content
+      const translateY = scrollY * 0.5;
+      heroContent.style.transform = `translateY(${translateY}px)`;
+      
+      // Parallax effect for hero graphics (slower)
+      const graphicsTranslateY = scrollY * 0.3;
+      heroGraphics.style.transform = `translateY(${graphicsTranslateY - heroHeight * 0.5}) scale(${1 + scrollProgress * 0.1})`;
+      
+      // Fade out hero content as we scroll
+      const opacity = Math.max(1 - scrollProgress * 1.5, 0);
+      heroContent.style.opacity = opacity.toString();
+      
+      ticking = false;
+    }
+    
+    function requestScrollUpdate() {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollEffects);
+        ticking = true;
+      }
+    }
+    
+    // Use passive listener for better performance
+    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+    
+    // Initial call
+    updateScrollEffects();
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollEffects);
+  } else {
+    initScrollEffects();
+  }
+</script>
+
+<style>
+  /* Reset for this page */
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    padding-top: 0; /* Remove the fixed nav padding for full-height hero */
+    max-width: none;
+  }
+  
+  @media (max-width: 80rem) {
+    :global(body) {
+      padding: 0; /* Override the responsive padding for index */
+    }
+  }
+  
+  :global(main) {
+    gap: 0;
+  }
+
+
+
+  /* Hero Section */
+  .hero-section {
+    background: #02330C;
+    color: #FFFFF5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+
+
+  .hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 6rem 3rem 3rem 3rem;
+    position: relative;
+  }
+
+  .hero-graphics {
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.3;
+  }
+
+  .hero-illustration {
+    max-width: 400px;
+    height: auto;
+  }
+
+  .hero-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(4rem, 8vw, 8rem);
+    font-weight: 400;
+    line-height: 1;
+    margin: 0 0 2rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  /* Magazine Section */
+  .magazine-section {
+    background: #FFFFF5;
+    color: #02330C;
+    padding: 2rem 0;
+    min-height: 100vh;
+  }
+
+  .magazine-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .issue-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 5rem;
+    font-weight: 400;
+    margin: 0 0 1rem 0;
+  }
+
+  .issue-date {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: #02330C;
+  }
+
+  .articles-container {
+    max-width: 1512px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .category-section {
+    margin-bottom: 4rem;
+  }
+
+  .category-header {
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .category-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -3px;
+    width: 90vw;
+    height: 3px;
+    background: #D2CC73;
+  }
+
+  .category-tag {
+    background: #D2CC73;
+    color: #FFFFF5;
+    padding: 0.75rem 2rem;
+    font-family: 'Alata', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    display: inline-block;
+    position: relative;
+  }
+
+  .articles-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .articles-list {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem 3rem;
+    }
+  }
+
+  .article-preview {
+    max-width: 600px;
+  }
+
+  .article-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .article-title a {
+    color: #02330C;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .article-title a:hover {
+    color: var(--accent);
+  }
+
+  .article-author {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #02330C;
+    margin: 0 0 1rem 0;
+  }
+
+  .article-excerpt {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #02330C;
+    margin: 0;
+    text-align: justify;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Smooth transitions for elements */
+  .hero-content {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Add parallax effect to hero graphics */
+  .hero-graphics {
+    transition: transform 0.3s ease-out;
+  }
+
+  /* Fade in animation for magazine section */
+  .magazine-content {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .hero-content {
+      padding: 4rem 1.5rem 3rem 1.5rem;
+    }
+
+    .hero-graphics {
+      right: 1.5rem;
+      opacity: 0.2;
+    }
+
+    .hero-illustration {
+      max-width: 250px;
+    }
+
+    .articles-container {
+      padding: 0 1.5rem;
+    }
+
+    .issue-title {
+      font-size: 3rem;
+    }
+
+    .article-title {
+      font-size: 2rem;
+    }
+  }
+</style>

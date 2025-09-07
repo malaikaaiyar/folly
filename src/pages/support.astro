@@ -1,22 +1,121 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import { site } from "../site"
-import { getCollection, getEntry } from 'astro:content';
-import Back from "../components/Back.astro"
-import Header from "../components/Header.astro"
-
-const page = await getEntry('pages', 'support')
-const { Content, headings } = await page.render();
 ---
-<Layout title={site.pages.support.title} desc={site.pages.support.description}>
 
-  <article>
-    <Header
-        title={page.data.title}
-            description={page.data.description}
-                created={page.data.created}
-                    updated={page.data.updated}
-                       />
-    <Content />
-  </article>
+<Layout title={site.pages.support.title} desc={site.pages.support.description}>
+  <div class="support-page">
+    <div class="support-container">
+      <h1 class="support-title">Apply</h1>
+      
+      <div class="section">
+        <div class="section-divider"></div>
+        <h2 class="section-title">Submit to Folly Magazine</h2>
+        <p class="section-content">
+          We're always looking for exceptional creative work in literature, politics, and the arts. If you're interested in contributing to our next issue, please get in touch.
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-divider"></div>
+        <h2 class="section-title">What we're looking for</h2>
+        <p class="section-content">
+          • Long-form creative writing<br>
+          • Political analysis and commentary<br>
+          • Art criticism and cultural essays<br>
+          • Photography and visual art<br>
+          • Poetry and experimental writing
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-divider"></div>
+        <h2 class="section-title">Get in touch</h2>
+        <p class="section-content">
+          Send your submissions and inquiries to <a href="mailto:folly@oxford.ac.uk">folly@oxford.ac.uk</a>
+        </p>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .support-page {
+    background: var(--light);
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+
+  .support-container {
+    max-width: 1512px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .support-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 5rem;
+    font-weight: 400;
+    text-align: center;
+    color: var(--dark);
+    margin: 0 0 4rem 0;
+    line-height: 1;
+  }
+
+  .section {
+    margin-bottom: 4rem;
+    position: relative;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 3px;
+    background: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Alata', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--accent);
+    margin: 0 0 2rem 0;
+    line-height: 1;
+  }
+
+  .section-content {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--dark);
+    max-width: 744px;
+    text-align: justify;
+    margin: 0;
+  }
+
+  .section-content a {
+    color: var(--dark);
+    text-decoration: underline;
+    transition: opacity 0.2s;
+  }
+
+  .section-content a:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 80rem) {
+    .support-container {
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .support-title {
+      font-size: 3rem;
+    }
+    
+    .section {
+      margin-bottom: 3rem;
+    }
+  }
+</style>

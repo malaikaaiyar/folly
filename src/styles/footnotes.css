@@ -18,7 +18,8 @@
 }
 
 .footnotes a:hover {
-  border-bottom: 1px solid #333;
+  color: #D2CC73;
+  border-bottom: 1px solid #D2CC73;
 }
 
 sup a {
