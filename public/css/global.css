@@ -244,15 +244,19 @@ nav {
 nav.scrolled {
   background: var(--light);
   /* border-bottom: var(--border); */
-  padding: 1rem 3rem;
+  padding: 1.5rem 3rem;
 }
 
 nav.scrolled .nav-links a {
   color: var(--dark) !important;
 }
 
+nav.scrolled .nav-links a:hover {
+  color: var(--accent) !important;
+}
+
 nav.scrolled .nav-logo {
-  filter: brightness(0) saturate(100%) invert(8%) sepia(95%) saturate(1352%) hue-rotate(88deg) brightness(94%) contrast(101%); /* Makes it dark green #02330C */
+  filter: brightness(0) saturate(100%) invert(8%) sepia(95%) saturate(1352%) hue-rotate(88deg) brightness(94%) contrast(101%); /* Makes it dark green var(--dark) */
 }
 
 .nav-logo-link {
@@ -418,7 +422,7 @@ nav.scrolled .nav-logo {
   }
   
     nav {
-    padding: 1.5rem 1.5rem;
+    padding: 1.5rem 1rem;
     font-size: 1.25rem;
     max-width: none;
     left: 0;
@@ -426,7 +430,7 @@ nav.scrolled .nav-logo {
   }
 
   nav.scrolled {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 1rem;
   }
   
   .nav-logo {
@@ -440,34 +444,49 @@ nav.scrolled .nav-logo {
 }
 
 @media (max-width: 40rem) {
+  body {
+    padding: var(--space-s);
+    padding-top: 5rem;
+    gap: 2rem;
+  }
+
   .hero-title {
-    font-size: 8rem;
-    line-height: 1.2;
+    font-size: 6rem;
+    line-height: 1.1;
     color: var(--light);
-    letter-spacing: -0.2rem;
+    letter-spacing: -0.1rem;
     margin-bottom: 0 !important;
   }
 
   h1 {
-    font-size: 3rem;
-    line-height: 1;
+    font-size: 2.5rem;
+    line-height: 1.1;
     margin-bottom: 0.175em;
   }
 
   h2 {
-    font-size: 2rem;
-    line-height: 1;
-
-    letter-spacing: -0.1rem;
+    font-size: 1.75rem;
+    line-height: 1.1;
+    letter-spacing: -0.05rem;
     margin-top: var(--space-m);
     margin-bottom: 0.175em;
   }
 
   h3 {
-    font-size: 1.25rem;
-    line-height: 2.25rem;
+    font-size: 1.1rem;
+    line-height: 1.4;
     margin-top: 0.5em;
     margin-bottom: 0.175em;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  article {
+    max-width: 100%;
+    padding: 0 var(--space-s);
   }
 
   .cards-featured-grid {
@@ -478,6 +497,15 @@ nav.scrolled .nav-logo {
     display: flex;
     flex-direction: column;
     gap: var(--space-m);
+  }
+
+  .nav-links {
+    gap: 1rem;
+    font-size: 1rem;
+  }
+
+  nav {
+    justify-content: space-between;
   }
 }
 

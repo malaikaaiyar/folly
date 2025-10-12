@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { generateExcerpt, formatTitle } from "../utils.js";
+import CustomTitle from "./CustomTitle.astro";
 
 // Get all published articles
 const allArticles = await getCollection("articles", ({ data }) => {
@@ -47,7 +48,7 @@ for (const category of categories) {
 <div class="magazine-content">
   <div class="magazine-container">
     <div class="magazine-header">
-      <h1 class="issue-title">Issue 1</h1>
+      <h1 class="issue-title">Volume 1</h1>
       <time class="issue-date">5 May 2025</time>
     </div>
 
@@ -63,8 +64,13 @@ for (const category of categories) {
             {articlesWithExcerpts[category].map((article) => (
               <article class="article-preview">
                 <h3 class="article-title">
-                  <a href={`/articles/${article.slug}`} set:html={formatTitle(article.data.title)}>
+                  <a href={`/articles/${article.slug}`} class="desktop-title" set:html={formatTitle(article.data.title)}>
                   </a>
+                  {article.data.title.includes('Mating') && article.data.title.includes('Rearview Mirror') && (
+                    <a href={`/articles/${article.slug}`} class="mobile-only-title">
+                      Mating in the Rearview Mirror
+                    </a>
+                  )}
                 </h3>
                 <p class="article-author">{article.data.author}</p>
                 <p class="article-excerpt">
@@ -78,7 +84,6 @@ for (const category of categories) {
     </div>
   </div>
 </div>
-
 <style>
   .magazine-content {
     background: var(--light);
@@ -88,14 +93,15 @@ for (const category of categories) {
   }
 
   .magazine-container {
-    max-width: 80vw;
+    max-width: 90vw;
     margin: 0 auto;
-    padding: 0 3rem;
+    padding: 0 2rem;
   }
 
   .magazine-header {
     text-align: center;
     margin-bottom: 4rem;
+    padding-top: 3rem;
   }
 
   .issue-title {
@@ -200,6 +206,26 @@ for (const category of categories) {
     transform: translateX(0);
   }
 
+  /* Desktop title styling - show by default */
+  .article-title .desktop-title {
+    display: inline-flex;
+  }
+
+  /* Mobile-only title styling - hide by default */
+  .article-title .mobile-only-title {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .article-title .desktop-title {
+      display: none;
+    }
+    
+    .article-title .mobile-only-title {
+      display: inline-flex;
+    }
+  }
+
   .article-author {
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
@@ -219,7 +245,19 @@ for (const category of categories) {
 
   @media (max-width: 80rem) {
     .magazine-container {
-      padding: 0 1.5rem;
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .magazine-container {
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .magazine-container {
+      padding: 0 0.75rem;
     }
   }
 

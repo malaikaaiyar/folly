@@ -10,9 +10,17 @@ import { site } from "../site"
       
       <div class="section">
         <div class="section-divider"></div>
-        <h2 class="section-title">What is Folly Magazine</h2>
+        <h2 class="section-title">Info</h2>
         <p class="section-content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend eu purus ac elementum. Fusce enim metus, sagittis vitae libero eu, laoreet porttitor neque. Mauris et quam gravida, condimentum dolor sit amet, tempus augue. Donec vel dolor ac ligula tincidunt convallis. Maecenas sodales diam id convallis finibus. Proin ut purus sapien. Aenean sodales dui justo, et finibus nunc cursus non. In a metus pretium magna consectetur congue. Vestibulum massa nulla, ornare non enim non, ultricies efficitur mi. Maecenas rutrum vestibulum elit at vulputate. Phasellus ullamcorper, nisi vel scelerisque rutrum, tellus lacus molestie arcu, nec sagittis nunc ipsum et ex.
+          Founded in Spring 2025, <i>Folly</i> publishes long-form essays, fiction, cultural criticism, and analysis. We aim to build a place at Oxford to provide space and time to think creatively and always critically. We publish termly. 
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-divider"></div>
+        <h2 class="section-title">Submissions</h2>
+        <p class="section-content">
+          Submissions and pitches are accepted year-round. We seek to publish sharp analysis of global politics, wide-ranging and curious cultural criticism, interviews with thinkers and writers, brave, surreal, and erudite fiction, translated and original poetry and work that teases apart the conjuncture.
         </p>
       </div>
 
@@ -22,80 +30,42 @@ import { site } from "../site"
         <div class="masthead-content">
           <div class="masthead-entry">
             <span class="name">Charlie Goldberg</span>
-            <span class="dots">.................................................................</span>
+            <span class="dots"></span>
             <span class="role">Editor</span>
           </div>
           <div class="masthead-entry">
             <span class="name">Faye Chang</span>
-            <span class="dots">............................................................................................................................................</span>
+            <span class="dots"></span>
             <span class="role">Editor</span>
-          </div>
-          <div class="masthead-entry">
-            <span class="name">Olivier Berg</span>
-            <span class="dots">................................................................................................................................</span>
-            <span class="role">Editor</span>
-          </div>
-          <div class="masthead-entry">
-            <span class="name">Geo Maur-Batsaki</span>
-            <span class="dots">................................................................................................................................</span>
-            <span class="role">Editor</span>
-          </div>
-          <div class="masthead-entry">
-            <span class="name">Jiayue Shi</span>
-            <span class="dots">................................................................................................................................</span>
-            <span class="role">Editor</span>
-          </div>
-          <div class="masthead-entry">
-            <span class="name">Hassan Akram</span>
-            <span class="dots">................................................................................................................................</span>
-            <span class="role">Editor</span>
-          </div>
-          <div class="masthead-entry">
-            <span class="name">Morien Robertson</span>
-            <span class="dots">................................................................................................................................</span>
-            <span class="role">Editor</span>
-          </div>
-          <div class="masthead-entry">
-            <span class="name">Lara Machado</span>
-            <span class="dots">................................................................................................................................</span>
-            <span class="role">Editor</span>
-          </div>
-          <div class="masthead-entry">
-            <span class="name">Malaika Aiyar</span>
-            <span class="dots">................................................................................................................................</span>
-            <span class="role">Web Design</span>
           </div>
           <div class="masthead-entry">
             <span class="name">Niamh Durnin</span>
-            <span class="dots">................................................................................................................................</span>
-            <span class="role">Design</span>
+            <span class="dots"></span>
+            <span class="role">Editor & Designer</span>
+          </div>
+          <div class="masthead-entry">
+            <span class="name">Malaika Aiyar</span>
+            <span class="dots"></span>
+            <span class="role">Designer & Web</span>
           </div>
           <div class="masthead-entry">
             <span class="name">Moli Birkinshaw</span>
-            <span class="dots">................................................................................................................................</span>
-            <span class="role">Design</span>
+            <span class="dots"></span>
+            <span class="role">Designer</span>
           </div>
           <div class="masthead-entry">
-            <span class="name">Zander Fitzgerald</span>
-            <span class="dots">................................................................................................................................</span>
-            <span class="role">Design</span>
+            <span class="name">Emilia Mason</span>
+            <span class="dots"></span>
+            <span class="role">Designer</span>
           </div>
         </div>
       </div>
 
       <div class="section">
         <div class="section-divider"></div>
-        <h2 class="section-title">Submit to the magazine</h2>
-        <p class="section-content">
-          If you want to be in our next issue, please fill out this form.
-        </p>
-      </div>
-
-      <div class="section">
-        <div class="section-divider"></div>
         <h2 class="section-title">Join the team</h2>
         <p class="section-content">
-          We're looking for an events officer, editors, and designers. Please fill out this form if you're interested.
+          We’re looking for editors, designers, and people interested in helping us throw great events. Please fill out this form if you’re interested.
         </p>
       </div>
     </div>
@@ -151,7 +121,6 @@ import { site } from "../site"
     font-size: 1rem;
     line-height: 1.6;
     color: var(--dark);
-    max-width: 744px;
     text-align: justify;
     margin: 0;
   }
@@ -161,7 +130,6 @@ import { site } from "../site"
     font-size: 1rem;
     line-height: 1.6;
     color: var(--dark);
-    max-width: 744px;
   }
 
   .masthead-entry {
@@ -182,10 +150,10 @@ import { site } from "../site"
 
   .dots {
     flex: 1;
-    overflow: hidden;
-    white-space: nowrap;
+    border-bottom: 2px dotted var(--dark);
     margin: 0 0.25rem;
-    font-weight: 400;
+    /* align-self: center; */
+    transform: translateY(0px);
   }
 
   .role {
@@ -195,7 +163,19 @@ import { site } from "../site"
 
   @media (max-width: 80rem) {
     .about-container {
-      padding: 0 1.5rem;
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-container {
+      padding: 0 0.75rem;
     }
   }
 

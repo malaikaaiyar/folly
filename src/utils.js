@@ -30,6 +30,7 @@ export function generateExcerpt(content, maxLength = 200) {
     .replace(/\[.*?\]\(.*?\)/g, '') // Remove links
     .replace(/#{1,6}\s/g, '') // Remove headers
     .replace(/\*{1,2}(.*?)\*{1,2}/g, '$1') // Remove bold/italic
+    .replace(/\\/g, '') // Remove backslashes
     .replace(/\n\s*\n/g, ' ') // Replace multiple newlines with space
     .replace(/\s+/g, ' ') // Replace multiple spaces with single space
     .trim();

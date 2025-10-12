@@ -4,13 +4,10 @@ author: "Charlie Goldberg interviews Alex Cocotas"
 category: "Interview"
 published: true
 pubDate: 2025-03-08
+image: '/images/cocotas-niamh.png'
+imageCaption: 'Illustration by Niamh Durnin'
 ---
-<figure>
-  <img src="/images/cocotas-niamh.png" style="width: 100%; max-width: 400px; " />
-  <figcaption><i>Illustration by Niamh Durnin</i></figcaption>
-  <br>
-</figure>
- 
+
 
 *Alex Cocotas is a writer living in Berlin. He's written about Jews, memory culture, and expats in* The Baffler.<sup id="fnref1"><a href="#fn1">1</a></sup>
 

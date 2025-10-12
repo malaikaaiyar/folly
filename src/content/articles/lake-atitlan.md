@@ -4,7 +4,7 @@ author: "Charlie Goldberg"
 category: "Fiction"
 published: true
 pubDate: 2025-03-08
-image: "/images/oxford-sketch.png"
+# image: "/images/oxford-sketch.png"
 ---
 
  

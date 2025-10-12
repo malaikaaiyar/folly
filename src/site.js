@@ -10,7 +10,7 @@ export const site = {
     // { title: "Magazine", url: "/stories" },
     { title: "Magazine", url: "/magazine" },
     // { title: "podcast", url: "/podcast" },
-    { title: "Masthead", url: "/about" },
+    { title: "About", url: "/about" },
     // { title: "support", url: "/support" },
   ],
 

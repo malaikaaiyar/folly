@@ -12,7 +12,7 @@ import MagazineSection from "../components/MagazineSection.astro"
         <!-- Decorative graphics placeholder -->
         <img src="/images/oxford-sketch.png" alt="Oxford Illustration" class="hero-illustration" />
       </div>
-      <h1 class="hero-title">FOLLY MAGAZINE</h1>
+      <h1 class="hero-title">FOLLY <br> MAGAZINE</h1>
       <p class="hero-subtitle">
         An Oxford student magazine publishing long-form creative work in literature, politics, and the arts.
       </p>
@@ -39,16 +39,8 @@ import MagazineSection from "../components/MagazineSection.astro"
       const heroHeight = heroSection.offsetHeight;
       const scrollProgress = Math.min(scrollY / heroHeight, 1);
       
-      // Parallax effect for hero content
-      const translateY = scrollY * 0.5;
-      heroContent.style.transform = `translateY(${translateY}px)`;
-      
-      // Parallax effect for hero graphics (slower)
-      const graphicsTranslateY = scrollY * 0.3;
-      heroGraphics.style.transform = `translateY(${graphicsTranslateY - heroHeight * 0.5}) scale(${1 + scrollProgress * 0.1})`;
-      
       // Fade out hero content as we scroll
-      const opacity = Math.max(1 - scrollProgress * 1.5, 0);
+      const opacity = Math.max(1 - scrollProgress * 2.5, 0);
       heroContent.style.opacity = opacity.toString();
       
       ticking = false;
@@ -75,7 +67,6 @@ import MagazineSection from "../components/MagazineSection.astro"
     initScrollEffects();
   }
 </script>
-
 <style>
   /* Reset for this page */
   :global(body) {
@@ -99,8 +90,8 @@ import MagazineSection from "../components/MagazineSection.astro"
 
   /* Hero Section */
   .hero-section {
-    background: #02330C;
-    color: #FFFFF5;
+    background: var(--dark);
+    color: var(--light);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -138,13 +129,13 @@ import MagazineSection from "../components/MagazineSection.astro"
     font-size: clamp(4rem, 8vw, 8rem);
     font-weight: 400;
     line-height: 1;
-    margin: 0 0 2rem 0;
+    margin: 0 0 1rem 0 !important;
     letter-spacing: -0.02em;
   }
 
   .hero-subtitle {
-    font-family: 'Libre Baskerville', serif;
-    font-style: italic;
+    font-family: 'Alata', sans-serif;
+    /* font-style: italic; */
     font-size: 1.25rem;
     line-height: 1.4;
     max-width: 600px;
@@ -153,8 +144,8 @@ import MagazineSection from "../components/MagazineSection.astro"
 
   /* Magazine Section */
   .magazine-section {
-    background: #FFFFF5;
-    color: #02330C;
+    background: var(--light);
+    color: var(--dark);
     padding: 2rem 0;
     min-height: 100vh;
   }
@@ -175,7 +166,7 @@ import MagazineSection from "../components/MagazineSection.astro"
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
     font-size: 1.25rem;
-    color: #02330C;
+    color: var(--dark);
   }
 
   .articles-container {
@@ -200,12 +191,12 @@ import MagazineSection from "../components/MagazineSection.astro"
     top: -3px;
     width: 90vw;
     height: 3px;
-    background: #D2CC73;
+    background: var(--accent);
   }
 
   .category-tag {
-    background: #D2CC73;
-    color: #FFFFF5;
+    background: var(--accent);
+    color: var(--light);
     padding: 0.75rem 2rem;
     font-family: 'Alata', sans-serif;
     font-size: 1.25rem;
@@ -241,7 +232,7 @@ import MagazineSection from "../components/MagazineSection.astro"
   }
 
   .article-title a {
-    color: #02330C;
+    color: var(--dark);
     text-decoration: none;
     transition: opacity 0.2s;
   }
@@ -254,7 +245,7 @@ import MagazineSection from "../components/MagazineSection.astro"
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
     font-size: 1rem;
-    color: #02330C;
+    color: var(--dark);
     margin: 0 0 1rem 0;
   }
 
@@ -262,7 +253,7 @@ import MagazineSection from "../components/MagazineSection.astro"
     font-family: 'Libre Baskerville', serif;
     font-size: 1rem;
     line-height: 1.5;
-    color: #02330C;
+    color: var(--dark);
     margin: 0;
     text-align: justify;
   }
@@ -274,12 +265,7 @@ import MagazineSection from "../components/MagazineSection.astro"
 
   /* Smooth transitions for elements */
   .hero-content {
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  /* Add parallax effect to hero graphics */
-  .hero-graphics {
-    transition: transform 0.3s ease-out;
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   /* Fade in animation for magazine section */
@@ -299,20 +285,19 @@ import MagazineSection from "../components/MagazineSection.astro"
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .hero-content {
-      padding: 4rem 1.5rem 3rem 1.5rem;
+      padding: 4rem 1rem 3rem 1rem;
     }
 
     .hero-graphics {
-      right: 1.5rem;
-      opacity: 0.2;
+      display: none;
     }
 
-    .hero-illustration {
-      max-width: 250px;
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
     }
 
     .articles-container {
-      padding: 0 1.5rem;
+      padding: 0 1rem;
     }
 
     .issue-title {

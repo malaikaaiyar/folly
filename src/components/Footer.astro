@@ -6,9 +6,8 @@ import { site } from "../site"
   <div class="footer-content">
     <div class="footer-links">
       <a href="/">Home</a>
-      <a href="/about">Masthead</a>
       <a href="/magazine">Magazine</a>
-      <a href="/support">Apply</a>
+      <a href="/about">About</a>
     </div>
     <div class="footer-logo">
       <img src="/images/folly-footer-logo.png" alt="Folly Logo" />
@@ -63,12 +62,12 @@ import { site } from "../site"
   .footer-logo img {
     width: 30px;
     height: 39px;
-    filter: brightness(0) saturate(100%) invert(8%) sepia(95%) saturate(1352%) hue-rotate(88deg) brightness(94%) contrast(101%); /* Make it dark green #02330C */
+    filter: brightness(0) saturate(100%) invert(8%) sepia(95%) saturate(1352%) hue-rotate(88deg) brightness(94%) contrast(101%); /* Make it dark green var(--dark) */
   }
 
   @media (max-width: 80rem) {
     .footer-content {
-      padding: 0 1.5rem;
+      padding: 0 1rem;
     }
     
     .footer-logo {
@@ -88,8 +87,7 @@ import { site } from "../site"
     }
     
     .footer-logo {
-      position: static;
-      margin-top: 2rem;
+      display: none;
     }
   }
 </style>
