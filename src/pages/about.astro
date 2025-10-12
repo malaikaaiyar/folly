@@ -152,8 +152,8 @@ import { site } from "../site"
     flex: 1;
     border-bottom: 2px dotted var(--dark);
     margin: 0 0.25rem;
-    /* align-self: center; */
-    transform: translateY(0px);
+    align-self: center;
+    transform: translateY(1px);
   }
 
   .role {
@@ -189,13 +189,18 @@ import { site } from "../site"
     }
     
     .masthead-entry {
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: row;
+      align-items: baseline;
       gap: 0.25rem;
     }
     
     .dots {
-      display: none;
+      flex: 1;
+      margin: 0 0.25rem;
+    }
+    
+    .name, .role {
+      flex-shrink: 0;
     }
   }
 </style>
