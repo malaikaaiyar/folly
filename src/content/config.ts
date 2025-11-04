@@ -10,6 +10,8 @@ const articlesCollection = defineCollection({
     category: z.string(),
     published: z.boolean().default(false),
     pubDate: z.coerce.date().optional(),
+    image: z.string().optional(), // Optional image path for sidebar
+    imageCaption: z.string().optional(), // Optional image caption
   }),
 });
 

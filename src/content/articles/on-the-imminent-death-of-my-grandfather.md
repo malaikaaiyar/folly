@@ -4,14 +4,9 @@ author: "Hannah Wei"
 category: "Poetry"
 published: true
 pubDate: 2025-03-08
+image: '/images/zander-grandfather.png'
+imageCaption: 'Illustration by Zander Fitzgerald'
 ---
-
-<figure>
-  <img src="/images/zander-grandfather.png" style="width: 100%; max-width: 300px; " />
-  <figcaption><i>Illustration by Zander Fitzgerald</i></figcaption>
-  <br>
-</figure>
- 
 
 1\.
 

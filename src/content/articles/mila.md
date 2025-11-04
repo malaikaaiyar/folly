@@ -4,6 +4,8 @@ author: "Faye Chang"
 category: "Fiction"
 published: true
 pubDate: 2025-03-08
+image: '/images/milalaika.png'
+imageCaption: 'Illustration by Malaika Aiyar'
 ---
 
 
@@ -11,12 +13,6 @@ pubDate: 2025-03-08
 
 
 <Center>
-<figure>
-  <img src="/images/milalaika.png" style="width: 100%; max-width: 400px; " />
-  <figcaption><i>Illustration by Malaika Aiyar</i></figcaption>
-  <br>
-</figure>
-
 <br>
 
 *But to-night such moving sinewed dreams lie out <br>
@@ -24,8 +20,6 @@ In darker fathoms, far beyond the head.*
 
 — Seamus Heaney, ‘Shore Woman’  
 </Center>
-
-
 
 <Center>
 

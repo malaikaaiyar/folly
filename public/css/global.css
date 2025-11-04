@@ -1,3 +1,6 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alata:wght@400&display=swap');
+
 *,
 *::before,
 *::after {
@@ -12,9 +15,9 @@
 }
 
 :root {
-  --light: #FFFFEC;
+  --light: #FFFFF5;
   --dark: #02330C;
-  --accent: #0072f5;
+  --accent: #D2CC73;
 
   --space-xs: 0.25rem;
   --space-s: 0.5rem;
@@ -29,7 +32,7 @@
 
   --padding-button: 0.25rem 0.8rem;
 
-  font-family: Hedvig Letters Serif, serif;
+  font-family: 'Libre Baskerville', serif;
   font-feature-settings:
     "liga" 1,
     "calt" 1; /* fix for Chrome */
@@ -37,7 +40,7 @@
 
 @supports (font-variation-settings: normal) {
   :root {
-    font-family: Hedvig Letters Serif, serif;
+    font-family: 'Libre Baskerville', serif;
   }
 }
 
@@ -52,13 +55,14 @@ html {
 
 body {
   min-height: 100vh;
-  max-width: 80rem;
+  /* max-width: 80rem; */
   display: flex;
   gap: 4rem;
   flex-direction: column;
   justify-content: space-between;
   margin: auto;
   padding: 1rem;
+  padding-top: 6rem; /* Account for fixed navigation */
   color: var(--dark);
 }
 
@@ -127,6 +131,7 @@ a {
 }
 
 a:hover {
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -218,40 +223,53 @@ header {
 }
 nav {
   width: 100%;
+  max-width: 1512px;
   display: flex;
   justify-content: space-between;
-  position: sticky;
+  align-items: center;
+  position: fixed;
   top: 0;
-  padding: 1rem 0 1rem 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1.5rem 3rem;
   background: var(--light);
-  border-bottom: var(--border);
-  text-transform: uppercase;
-  font-weight: 500;
+  border-bottom: none;
+  font-family: 'Alata', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
   z-index: 1000;
 }
 
-footer {
-  width: 100%;
-  margin-bottom: 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 1rem 0 0 0;
-  border-top: var(--border);
-
-  .footer-links {
-    display: flex;
-    justify-content: space-between;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-
-  .footer-copyright {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-  }
+.nav-logo-link {
+  text-decoration: none;
 }
+
+.nav-logo {
+  width: 46px;
+  height: 59px;
+  filter: brightness(0) saturate(100%) invert(8%) sepia(95%) saturate(1352%) hue-rotate(88deg) brightness(94%) contrast(101%); /* Makes it dark green var(--dark) */
+}
+
+.nav-logo:hover {
+  opacity: 0.7;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--dark);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* Footer styles are now handled in Footer.astro component */
 
 .card {
   padding: var(--space-m);
@@ -262,9 +280,6 @@ footer {
   gap: var(--space-m);
   text-decoration: none;
 
-  .card-description {
-    /* font-style: italic; */
-  }
 
   .card-title {
     text-transform: uppercase;
@@ -272,8 +287,8 @@ footer {
   }
 
   &:hover {
-    background: var(--dark);
-    color: var(--light) !important;
+    background: var(--accent);
+    color: var(--dark) !important;
     cursor: pointer;
   }
 }
@@ -299,9 +314,7 @@ footer {
     font-size: 3vh;
     line-height: 1;
   }
-  .podcast-description {
-    /* font-style: italic; */
-  }
+
   .podcast-date {
     text-align: end;
   }
@@ -371,8 +384,8 @@ footer {
   border: var(--border);
 
   &:hover {
-    background: var(--dark);
-    color: var(--light);
+    background: var(--accent);
+    color: var(--dark);
   }
 }
 
@@ -384,38 +397,72 @@ footer {
 @media (max-width: 80rem) {
   body {
     padding: var(--space-s);
+    padding-top: 6rem;
+  }
+  
+    nav {
+    padding: 1.5rem 1rem;
+    font-size: 1.1rem;
+    max-width: none;
+    left: 0;
+    transform: none;
+  }
+
+  
+  .nav-logo {
+    width: 36px;
+    height: 46px;
+  }
+  
+  .nav-links {
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 40rem) {
+  body {
+    padding: var(--space-s);
+    padding-top: 5rem;
+    gap: 2rem;
+  }
+
   .hero-title {
-    font-size: 8rem;
-    line-height: 1.2;
-    color: var(--light);
-    letter-spacing: -0.2rem;
+    font-size: 6rem;
+    line-height: 1.1;
+    color: var(--dark);
+    letter-spacing: -0.1rem;
     margin-bottom: 0 !important;
   }
 
   h1 {
-    font-size: 3rem;
-    line-height: 1;
+    font-size: 2.5rem;
+    line-height: 1.1;
     margin-bottom: 0.175em;
   }
 
   h2 {
-    font-size: 2rem;
-    line-height: 1;
-
-    letter-spacing: -0.1rem;
+    font-size: 1.75rem;
+    line-height: 1.1;
+    letter-spacing: -0.05rem;
     margin-top: var(--space-m);
     margin-bottom: 0.175em;
   }
 
   h3 {
-    font-size: 1.25rem;
-    line-height: 2.25rem;
+    font-size: 1.1rem;
+    line-height: 1.4;
     margin-top: 0.5em;
     margin-bottom: 0.175em;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  article {
+    max-width: 100%;
+    padding: 0 var(--space-s);
   }
 
   .cards-featured-grid {
@@ -427,13 +474,22 @@ footer {
     flex-direction: column;
     gap: var(--space-m);
   }
+
+  .nav-links {
+    gap: 1rem;
+    font-size: 1rem;
+  }
+
+  nav {
+    justify-content: space-between;
+  }
 }
 
 @media (min-width: 40rem) {
   .hero-title {
     font-size: 16rem; /* 128px */
     line-height: 1.2;
-    color: var(--light);
+    color: var(--dark);
     letter-spacing: -0.6rem;
     margin-bottom: 0 !important;
   }

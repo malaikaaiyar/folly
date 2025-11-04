@@ -4,13 +4,10 @@ author: "Geo Maur-Batsaki"
 category: "Fiction"
 published: true
 pubDate: 2025-03-08
+image: '/images/cartoon-geo.png'
+imageCaption: 'Illustration by Zander Fitzgerald'
 ---
 
-<figure>
-  <img src="/images/cartoon-geo.png" style="width: 100%;" />
-  <figcaption><i>Illustration by Zander Fitzgerald</i></figcaption>
-  <br>
-</figure>
 
 We were seven all, two too many spilling out the sides of the five-seater — Three windows open, one—behind—broken, hairline fractures spilling down from a jagged corner — I twisted toward an unbroken window, the leather of the car seat clinging painfully to the undersides of my thighs tender and blistering as I leaned backwards, away from the mass of sunburnt limbs in the backseat. Eyes stinging from Etesian-stirred dust, the crown of my head already sun-lanced and smarting, I watched him: watched the glare-bleached fuzz flittering on the backs of fingers curled around the peeling steering wheel, the tremor in the ring finger and pinkie, a proactive, past-perfect souvenir from his father’s side travelling in a lazy arc, up-and-down-and-sideways with the wheel in tandem with the wheels around switchback after switchback, pins in the mountain’s thistle-bush hair — Prophetic perfect: I died. I will die—I have not yet; but it was imminent. My every surrounding (the cicadas’ screaming; the Coke bottle growing warm, sweating between my thighs; the salt crystallising on my lip) was converging into a hot static, breathing down my neck, curling around my throat, down my oesophagus, asphyxiation from the inside out—every breath a bruising grip.
 
