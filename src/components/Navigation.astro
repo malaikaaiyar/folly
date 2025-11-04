@@ -15,33 +15,3 @@ import { site } from "../site"
   </div>
 </nav>
 
-<script>
-  // Add scroll listener for theme switching
-  function handleScroll() {
-    const nav = document.getElementById('main-nav');
-    const heroSection = document.querySelector('.hero-section') as HTMLElement;
-    
-    if (!nav) return;
-    
-    // If there's no hero section (like on post pages), default to light mode
-    if (!heroSection) {
-      nav.classList.add('scrolled');
-      return;
-    }
-    
-    const heroHeight = heroSection.offsetHeight;
-    const scrollY = window.scrollY;
-    
-    if (scrollY > heroHeight - 100) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  }
-  
-  // Add event listener
-  window.addEventListener('scroll', handleScroll);
-  
-  // Call once on load
-  handleScroll();
-</script>
