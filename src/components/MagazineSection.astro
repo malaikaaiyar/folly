@@ -64,13 +64,8 @@ for (const category of categories) {
             {articlesWithExcerpts[category].map((article) => (
               <article class="article-preview">
                 <h3 class="article-title">
-                  <a href={`/articles/${article.slug}`} class="desktop-title" set:html={formatTitle(article.data.title)}>
+                  <a href={`/articles/${article.slug}`} set:html={formatTitle(article.data.title)}>
                   </a>
-                  {article.data.title.includes('Mating') && article.data.title.includes('Rearview Mirror') && (
-                    <a href={`/articles/${article.slug}`} class="mobile-only-title">
-                      Mating in the Rearview Mirror
-                    </a>
-                  )}
                 </h3>
                 <p class="article-author">{article.data.author}</p>
                 <p class="article-excerpt">
@@ -182,9 +177,8 @@ for (const category of categories) {
     color: var(--dark);
     text-decoration: none;
     transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: block;
+    line-height: inherit;
   }
 
   .article-title a::after {
@@ -206,25 +200,6 @@ for (const category of categories) {
     transform: translateX(0);
   }
 
-  /* Desktop title styling - show by default */
-  .article-title .desktop-title {
-    display: inline-flex;
-  }
-
-  /* Mobile-only title styling - hide by default */
-  .article-title .mobile-only-title {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    .article-title .desktop-title {
-      display: none;
-    }
-    
-    .article-title .mobile-only-title {
-      display: inline-flex;
-    }
-  }
 
   .article-author {
     font-family: 'Libre Baskerville', serif;

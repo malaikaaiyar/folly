@@ -22,7 +22,9 @@ import MagazineSection from "../components/MagazineSection.astro"
   </section>
 
   <!-- Magazine Content Section -->
-  <MagazineSection />
+  <div class="magazine-section-wrapper">
+    <MagazineSection />
+  </div>
 </Layout>
 
 <style>
@@ -274,6 +276,17 @@ import MagazineSection from "../components/MagazineSection.astro"
     }
   }
 
+
+  /* Hide magazine section on mobile */
+  .magazine-section-wrapper {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .magazine-section-wrapper {
+      display: none;
+    }
+  }
 
   /* Responsive adjustments */
   @media (max-width: 768px) {

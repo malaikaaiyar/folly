@@ -419,6 +419,22 @@ nav {
   }
 }
 
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem 0.75rem;
+  }
+  
+  .nav-logo {
+    width: 30px;
+    height: 38px;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
 @media (max-width: 40rem) {
   body {
     padding: var(--space-s);
