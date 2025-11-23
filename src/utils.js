@@ -15,11 +15,6 @@ export const featuredArticles = sortedArticles.filter((a) => {
   return a.data.featured === true;
 });
 
-// Get all published podcasts
-export const allPodcasts = await getCollection("podcasts", ({ data }) => {
-  return data.published == true;
-});
-
 // Function to generate excerpt from article content
 export function generateExcerpt(content, maxLength = 200) {
   // Remove HTML tags and markdown formatting

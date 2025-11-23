@@ -4,6 +4,11 @@ author: "Lara Machado"
 category: "Fiction"
 published: true
 pubDate: 2025-05-06
+description: | 
+    I suppose you’ll want to know how it started. Like most things in life, it was a matter of chance.
+    
+    The start of summer had brought with it an unbelievable heat and I came to town on a bus. There was no air conditioning, only pairs of those old-school, semi-openable windows. They didn’t help. Heat slipped through the openings and settled itself heavily into our space. The bus rolled on steadily, but around it everything seemed impossibly immobile. Moving felt more like wading. I might not have been covered in mud, but thick sweat layered itself on my skin. The worst was my feet. I wriggled them inside my boots, but they seemed increasingly melted into the fabric of my socks. 
+
 ---
 
 I suppose you’ll want to know how it started. Like most things in life, it was a matter of chance. 

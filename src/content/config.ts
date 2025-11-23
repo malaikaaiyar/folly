@@ -12,6 +12,7 @@ const articlesCollection = defineCollection({
     pubDate: z.coerce.date().optional(),
     image: z.string().optional(), // Optional image path for sidebar
     imageCaption: z.string().optional(), // Optional image caption
+    description: z.string().optional(), // Description for article preview
   }),
 });
 
@@ -22,17 +23,6 @@ const authors = defineCollection({
     bio: z.string().optional(),
     email: z.string().email().optional(),
     website: z.string().optional(),
-  }),
-});
-
-const podcasts = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    created: z.string().transform((str) => new Date(str)),
-    published: z.boolean().optional().default(false),
-    tags: z.array(z.string()),
   }),
 });
 
@@ -48,6 +38,5 @@ const pages = defineCollection({
 export const collections = {
   'articles': articlesCollection,
   authors,
-  podcasts,
   pages,
 };

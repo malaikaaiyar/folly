@@ -4,6 +4,7 @@ author: "Olivier Berg"
 category: "Analysis"
 published: true
 pubDate: 2023-11-20
+description: "Over the past decade Dutch politics has veered hard to the right as voters respond to Geert Wilder's anti-immigration appeals. Olivier Berg surveys the vacillating response of the center-right to the threat."
 ---
 
 ## Amsterdam riots

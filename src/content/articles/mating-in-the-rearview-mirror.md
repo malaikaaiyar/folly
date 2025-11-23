@@ -4,6 +4,7 @@ author: "Pippa Conlon"
 category: "Criticism"
 published: true
 pubDate: 2025-05-06
+description: "Mating (1991), the breakthrough novel of the peripatetic developmentalist-turned-novelist Norman Rush, has recently enjoyed a revival. Pippa Conlon explores the novel's relationship with the Rush's radical youth and his lifelong relationship with his wife."
 ---
 
 In 2023, more than thirty years after it won the National Book Award, Norman Rush’s *Mating* (1991) enjoyed that rare and curious thing: a comeback. The reason, the *New York Times* ventured, was that ‘younger readers’, and young women in particular, who were ‘thinking seriously about romantic relationships’ found themselves reading Rush. His novel, in this light, acts as a kind of amorous almanac by which we can measure the extent of our own romance. I cannot vouch for the seriousness of my thoughts, but it seems only fair to admit to some intuitions or prejudices. One is that an equal love, a symmetry of affection and loyalty, is hard to come by. Another is that only in exceptional cases is this love equalising in effect so that, as in the case of *Mating*, a woman’s love for a man and his love for her mean that they are equal partners; in other words, that there is a parity of passion. 

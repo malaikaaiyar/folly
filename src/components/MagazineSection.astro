@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { generateExcerpt, formatTitle } from "../utils.js";
-import CustomTitle from "./CustomTitle.astro";
+import { formatTitle } from "../utils.js";
 
 // Get all published articles
 const allArticles = await getCollection("articles", ({ data }) => {
@@ -31,18 +30,6 @@ if (categories.includes("Editor's Note")) {
   categories.splice(categories.indexOf("Editor's Note"), 1);
   categories.unshift("Editor's Note");
 }
-
-// Generate excerpts for all articles
-const articlesWithExcerpts = {};
-for (const category of categories) {
-  articlesWithExcerpts[category] = await Promise.all(
-    articlesByCategory[category].map(async (article) => {
-      const { body } = article;
-      const excerpt = generateExcerpt(body, 250);
-      return { ...article, excerpt };
-    })
-  );
-}
 ---
 
 <div class="magazine-content">
@@ -61,7 +48,7 @@ for (const category of categories) {
           </div>
           
           <div class="articles-list">
-            {articlesWithExcerpts[category].map((article) => (
+            {articlesByCategory[category].map((article) => (
               <article class="article-preview">
                 <h3 class="article-title">
                   <a href={`/articles/${article.slug}`} class="desktop-title" set:html={formatTitle(article.data.title)}>
@@ -73,9 +60,11 @@ for (const category of categories) {
                   )}
                 </h3>
                 <p class="article-author">{article.data.author}</p>
-                <p class="article-excerpt">
-                  {article.excerpt}
-                </p>
+                {article.data.description && (
+                  <p class="article-excerpt">
+                    {article.data.description}
+                  </p>
+                )}
               </article>
             ))}
           </div>
@@ -93,9 +82,9 @@ for (const category of categories) {
   }
 
   .magazine-container {
-    max-width: 90vw;
+    max-width: 70rem;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 3rem;
   }
 
   .magazine-header {
@@ -115,12 +104,12 @@ for (const category of categories) {
   .issue-date {
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--dark);
   }
 
   .articles-container {
-    max-width: 1200px;
+    max-width: 70rem;
     margin: 0 auto;
   }
 
@@ -131,6 +120,8 @@ for (const category of categories) {
   .category-header {
     margin-bottom: 2rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
   .category-divider {
@@ -153,17 +144,24 @@ for (const category of categories) {
     grid-template-columns: 1fr;
     gap: 3rem;
     margin-top: 2rem;
+    align-items: start;
   }
 
   @media (min-width: 768px) {
     .articles-list {
       grid-template-columns: 1fr 1fr;
       gap: 4rem 3rem;
+      align-items: start;
     }
   }
 
   .article-preview {
-    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: start;
+    height: fit-content;
   }
 
   .article-title {
@@ -172,9 +170,6 @@ for (const category of categories) {
     font-weight: 400;
     line-height: 1.2;
     margin: 0 0 0.5rem 0;
-  }
-
-  .article-title {
     position: relative;
   }
 
@@ -237,10 +232,11 @@ for (const category of categories) {
   .article-excerpt {
     font-family: 'Libre Baskerville', serif;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
     color: var(--dark);
     margin: 0;
     text-align: justify;
+    white-space: pre-line;
   }
 
   @media (max-width: 80rem) {

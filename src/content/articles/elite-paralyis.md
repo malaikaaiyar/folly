@@ -6,6 +6,7 @@ published: true
 pubDate: 2025-03-08
 image: "/images/folly-bridge-moli.png"
 imageCaption: "Illustration by Moli Birkinshaw"
+description: "An editorial."
 ---
 
 Everything under heaven is in utter chaos. Slop reigns supreme. The earth boils. The global financial system teeters on the edge of collapse, not due to cyclical crisis or hegemonic challenge but rather the bumbling actions of an idiot. Genocide continues apace, this time not with the helpless protestations of the liberal elite but with the gleeful support of a global reactionary alliance. The right continues its victorious march around the world. So many of us spend the majority of our waking hours staring at screens, with mute horror or silent amusement, feeling helpless over the state of the world – or, worse, helpless to even control our own time and attention. It can feel as if at some point the world became, out of sheer limitlessness of information, an illegible text. Any hope of deciphering it seems – or is – delusional. In dire times like these it’s become clear what’s necessary: a new student publication.
