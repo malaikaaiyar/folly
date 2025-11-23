@@ -51,13 +51,8 @@ if (categories.includes("Editor's Note")) {
             {articlesByCategory[category].map((article) => (
               <article class="article-preview">
                 <h3 class="article-title">
-                  <a href={`/articles/${article.slug}`} class="desktop-title" set:html={formatTitle(article.data.title)}>
+                  <a href={`/articles/${article.slug}`} set:html={formatTitle(article.data.title)}>
                   </a>
-                  {article.data.title.includes('Mating') && article.data.title.includes('Rearview Mirror') && (
-                    <a href={`/articles/${article.slug}`} class="mobile-only-title">
-                      Mating in the Rearview Mirror
-                    </a>
-                  )}
                 </h3>
                 <p class="article-author">{article.data.author}</p>
                 {article.data.description && (
@@ -177,7 +172,7 @@ if (categories.includes("Editor's Note")) {
     color: var(--dark);
     text-decoration: none;
     transition: all 0.3s ease;
-    display: inline-flex;
+    display: inline;
     align-items: center;
     gap: 0.5rem;
   }
