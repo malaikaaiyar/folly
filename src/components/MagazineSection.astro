@@ -7,40 +7,60 @@ const allArticles = await getCollection("articles", ({ data }) => {
   return data.published == true;
 });
 
-// Sort articles by category, then alphabetically
-const sortedArticles = allArticles.sort((a, b) => {
-  const categoryComparison = a.data.category.localeCompare(b.data.category);
-  if (categoryComparison !== 0) return categoryComparison;
-  return a.data.title.localeCompare(b.data.title);
-});
+// Helper to group a set of articles by category and sort
+function groupByCategory(articles) {
+  const sortedArticles = [...articles].sort((a, b) => {
+    const categoryComparison = a.data.category.localeCompare(b.data.category);
+    if (categoryComparison !== 0) return categoryComparison;
+    return a.data.title.localeCompare(b.data.title);
+  });
 
-// Group articles by category
-const articlesByCategory = sortedArticles.reduce((acc, article) => {
-  const category = article.data.category;
-  if (!acc[category]) {
-    acc[category] = [];
+  const articlesByCategory = sortedArticles.reduce((acc, article) => {
+    const category = article.data.category;
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(article);
+    return acc;
+  }, {});
+
+  const categories = Object.keys(articlesByCategory).sort();
+  if (categories.includes("Editor's Note")) {
+    categories.splice(categories.indexOf("Editor's Note"), 1);
+    categories.unshift("Editor's Note");
   }
-  acc[category].push(article);
-  return acc;
-}, {});
 
-// Get categories and sort them, with Editor's Note first
-const categories = Object.keys(articlesByCategory).sort();
-if (categories.includes("Editor's Note")) {
-  categories.splice(categories.indexOf("Editor's Note"), 1);
-  categories.unshift("Editor's Note");
+  return { articlesByCategory, categories };
 }
+
+// Split articles by volume (volume defaults to 1 in schema)
+const volume1Articles = allArticles.filter(
+  (article) => article.data.volume === 1
+);
+const volume2Articles = allArticles.filter(
+  (article) => article.data.volume === 2
+);
+
+const {
+  articlesByCategory: volume1ArticlesByCategory,
+  categories: volume1Categories
+} = groupByCategory(volume1Articles);
+
+const {
+  articlesByCategory: volume2ArticlesByCategory,
+  categories: volume2Categories
+} = groupByCategory(volume2Articles);
 ---
 
 <div class="magazine-content">
   <div class="magazine-container">
     <div class="magazine-header">
-      <h1 class="issue-title">Volume 1</h1>
-      <time class="issue-date">5 May 2025</time>
+      <h1 class="issue-title">Volume 2</h1>
+      <time class="issue-date">1 February 2026</time>
     </div>
 
     <div class="articles-container">
-      {categories.map((category) => (
+      {volume2Categories.map((category) => (
         <div class="category-section">
           <div class="category-header">
             <div class="category-divider"></div>
@@ -48,7 +68,7 @@ if (categories.includes("Editor's Note")) {
           </div>
           
           <div class="articles-list">
-            {articlesByCategory[category].map((article) => (
+            {volume2ArticlesByCategory[category].map((article) => (
               <article class="article-preview">
                 <h3 class="article-title">
                   <a href={`/articles/${article.slug}`} set:html={formatTitle(article.data.title)}>
@@ -56,9 +76,44 @@ if (categories.includes("Editor's Note")) {
                 </h3>
                 <p class="article-author">{article.data.author}</p>
                 {article.data.description && (
-                  <p class="article-excerpt">
-                    {article.data.description}
-                  </p>
+                  <p
+                    class="article-excerpt"
+                    set:html={article.data.description}
+                  ></p>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="magazine-header">
+      <h1 class="issue-title">Volume 1</h1>
+      <time class="issue-date">5 May 2025</time>
+    </div>
+
+    <div class="articles-container">
+      {volume1Categories.map((category) => (
+        <div class="category-section">
+          <div class="category-header">
+            <div class="category-divider"></div>
+            <span class="category-tag">{category}</span>
+          </div>
+          
+          <div class="articles-list">
+            {volume1ArticlesByCategory[category].map((article) => (
+              <article class="article-preview">
+                <h3 class="article-title">
+                  <a href={`/articles/${article.slug}`} set:html={formatTitle(article.data.title)}>
+                  </a>
+                </h3>
+                <p class="article-author">{article.data.author}</p>
+                {article.data.description && (
+                  <p
+                    class="article-excerpt"
+                    set:html={article.data.description}
+                  ></p>
                 )}
               </article>
             ))}

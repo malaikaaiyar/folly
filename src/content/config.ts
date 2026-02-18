@@ -10,6 +10,7 @@ const articlesCollection = defineCollection({
     category: z.string(),
     published: z.boolean().default(false),
     pubDate: z.coerce.date().optional(),
+    volume: z.coerce.number().default(1),
     image: z.string().optional(), // Optional image path for sidebar
     imageCaption: z.string().optional(), // Optional image caption
     description: z.string().optional(), // Description for article preview

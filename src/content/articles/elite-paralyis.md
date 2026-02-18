@@ -4,6 +4,7 @@ author: "The Editors"
 category: "Editor's Note"
 published: true
 pubDate: 2025-03-08
+volume: 1
 image: "/images/folly-bridge-moli.png"
 imageCaption: "Illustration by Moli Birkinshaw"
 description: "An editorial."

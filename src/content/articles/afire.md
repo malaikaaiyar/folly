@@ -4,6 +4,7 @@ author: "Lara Machado"
 category: "Fiction"
 published: true
 pubDate: 2025-05-06
+volume: 1
 description: | 
     I suppose you’ll want to know how it started. Like most things in life, it was a matter of chance.
     

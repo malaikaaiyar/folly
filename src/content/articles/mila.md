@@ -4,6 +4,7 @@ author: "Faye Chang"
 category: "Fiction"
 published: true
 pubDate: 2025-03-08
+volume: 1
 image: '/images/milalaika.png'
 imageCaption: 'Illustration by Malaika Aiyar'
 description: |

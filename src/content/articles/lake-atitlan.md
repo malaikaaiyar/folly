@@ -4,6 +4,7 @@ author: "Charlie Goldberg"
 category: "Fiction"
 published: true
 pubDate: 2025-03-08
+volume: 1
 description: "On my gap year I ran away from my family to spend a couple months in Guatemala. I'd always wanted to travel after high school, but I knew the stereotypes about gap years and wanted to avoid them. So I found myself in a cooperatively-run Guatemalan school in the mountains, being taught Cervantes’s tongue by a motley crew of aging former guerillas and new, middle-class hires, who for some reason tended to be horny Guatemalan men. It was one of the lonelier periods of my life. Spanish remained stubbornly incomprehensible. At the end of the seventh week, three American girls that I had become friends with put together a plan to hire a local guide and make the 50-mile-or-so trek to Lake Atitlan, a volcanic lake in the center of the country ringed by small hostels, ritual centers, and mansions of both the Guatemalan and international elite."
 ---
 

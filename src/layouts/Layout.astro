@@ -6,9 +6,10 @@ import { site } from "../site"
 interface Props {
 	title: string;
 	desc: string;
+  hideFooter?: boolean;
 }
 
-const { title, desc } = Astro.props;
+const { title, desc, hideFooter } = Astro.props;
 ---
 
 <!doctype html>
@@ -39,11 +40,11 @@ const { title, desc } = Astro.props;
 		<title>{title} | {site.title}</title>
   </head>
 	<body>
-  <Navigation />
+    <Navigation />
 		<main>
 			<slot />
 		</main>
-  <Footer />
+    {hideFooter ? null : <Footer />}
 	</body>
 </html>
 

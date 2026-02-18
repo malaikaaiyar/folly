@@ -4,6 +4,7 @@ author: "Pippa Conlon"
 category: "Criticism"
 published: true
 pubDate: 2025-05-06
+volume: 1
 description: "Mating (1991), the breakthrough novel of the peripatetic developmentalist-turned-novelist Norman Rush, has recently enjoyed a revival. Pippa Conlon explores the novel's relationship with the Rush's radical youth and his lifelong relationship with his wife."
 ---
 

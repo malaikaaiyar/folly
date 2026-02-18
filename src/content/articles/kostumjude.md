@@ -4,6 +4,7 @@ author: "Charlie Goldberg interviews Alex Cocotas"
 category: "Interview"
 published: true
 pubDate: 2025-03-08
+volume: 1
 image: '/images/cocotas-niamh.png'
 imageCaption: 'Illustration by Niamh Durnin'
 description: "Germany has stood for its resolute support for Israel's assault on Gaza. Alex Cocotas explains the origins of this stance, its implications for Jewish and Muslim life in Germany, and the role of the intellectual in Europe today."

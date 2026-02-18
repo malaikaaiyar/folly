@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro"
 import MagazineSection from "../components/MagazineSection.astro"
 ---
 
-<Layout title={site.pages.index.title} desc={site.pages.index.description}>
+<Layout title={site.pages.index.title} desc={site.pages.index.description} hideFooter={true}>
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-content">
@@ -13,16 +13,19 @@ import MagazineSection from "../components/MagazineSection.astro"
         <p class="hero-subtitle">
           An Oxford student magazine publishing long-form creative work in literature, politics, and the arts.
         </p>
+        <br>
+        <p class="hero-subtitle"><a class="volume-link" href="/magazine"><em>Go to Volume 2</em></a></p>
       </div>
       <div class="hero-graphics">
         <!-- Decorative graphics placeholder -->
         <img src="/images/fin.png" alt="Oxford Illustration" class="hero-illustration" />
       </div>
+
     </div>
   </section>
 
   <!-- Rotating Banner -->
-  <section class="rotating-banner">
+  <!-- <section class="rotating-banner">
     <div class="banner-wrapper">
       <div class="banner-content">
         <span class="banner-text">volume 2 coming jan 2026</span>
@@ -41,10 +44,10 @@ import MagazineSection from "../components/MagazineSection.astro"
         <span class="banner-text">volume 2 coming jan 2026</span>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Magazine Content Section -->
-  <MagazineSection />
+  <!-- <MagazineSection /> -->
 </Layout>
 
 <style>
@@ -128,6 +131,44 @@ import MagazineSection from "../components/MagazineSection.astro"
     line-height: 1.4;
     max-width: 600px;
     margin: 0;
+  }
+
+  /* Volume 2 link */
+  .volume-link-wrapper {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .volume-link {
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .volume-link::after {
+    content: '→';
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+    color: var(--accent);
+    font-size: 0.9em;
+  }
+
+  .volume-link:hover {
+    color: var(--accent);
+    transform: translateX(6px);
+  }
+
+  .volume-link:hover::after {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   /* Rotating Banner */

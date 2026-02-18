@@ -4,6 +4,7 @@ author: "Hassan Akram"
 category: "Criticism"
 published: true
 pubDate: 2025-03-08
+volume: 1
 description: "Al Pacino came of age in the Bronx; he matured as an actor in the turbulent transition years of the 1970s, when New York was in the midst of urban crisis. Hassan Akram reviews his memoir, Sonny Boy (2024), and gives a panoramic account of the actor's career."
 ---
 
