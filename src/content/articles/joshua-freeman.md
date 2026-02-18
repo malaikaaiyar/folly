@@ -1,5 +1,5 @@
 ---
-title: "Working class pasts"
+title: "Working Class Pasts"
 author: "Charlie Goldberg"
 category: "Interview"
 published: true
