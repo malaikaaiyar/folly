@@ -41,32 +41,57 @@ const optimizedScrollImages = useScrollImages && scrollImages ? await Promise.al
 
 <aside class="image-column" id="image-column" class:list={captionRevealOnHover ? ["caption-reveal-on-hover"] : []}>
   <div class="image-column-inner">
+    {/* Desktop: single scroll-swapping image */}
     {useScrollImages && displayImage && (
-      <img
-        id="scrollable-image"
-        src={optimizedScrollImages![0].image}
-        alt={alt}
-        width={IMG_WIDTH}
-        height={IMG_HEIGHT}
-        class="image-column-img"
-        loading="lazy"
-        decoding="async"
-        data-scroll-images={JSON.stringify(optimizedScrollImages)}
-      />
+      <div class="image-column-scroll-desktop">
+        <img
+          id="scrollable-image"
+          src={optimizedScrollImages![0].image}
+          alt={alt}
+          width={IMG_WIDTH}
+          height={IMG_HEIGHT}
+          class="image-column-img"
+          loading="lazy"
+          decoding="async"
+          data-scroll-images={JSON.stringify(optimizedScrollImages)}
+        />
+        <p class="image-column-caption" id="scrollable-caption">{displayCaption || caption || ''}</p>
+      </div>
+    )}
+    {/* Mobile: all images stacked */}
+    {useScrollImages && optimizedScrollImages && (
+      <div class="image-column-scroll-mobile">
+        {optimizedScrollImages.map((item, i) => (
+          <div class="image-column-stack-item">
+            <img
+              src={item.image}
+              alt={`${alt} ${i + 1}`}
+              width={IMG_WIDTH}
+              height={IMG_HEIGHT}
+              class="image-column-img"
+              loading="lazy"
+              decoding="async"
+            />
+            {item.caption && <p class="image-column-caption">{item.caption}</p>}
+          </div>
+        ))}
+      </div>
     )}
     {!useScrollImages && (displayImage || image) && (
-      <Image
-        src={displayImage || image!}
-        alt={alt}
-        width={IMG_WIDTH}
-        height={IMG_HEIGHT}
-        class="image-column-img"
-        loading="lazy"
-        decoding="async"
-      />
-    )}
-    {(useScrollImages || displayCaption || caption) && (displayImage || image) && (
-      <p class="image-column-caption" id="scrollable-caption">{displayCaption || caption || ''}</p>
+      <>
+        <Image
+          src={displayImage || image!}
+          alt={alt}
+          width={IMG_WIDTH}
+          height={IMG_HEIGHT}
+          class="image-column-img"
+          loading="lazy"
+          decoding="async"
+        />
+        {(displayCaption || caption) && (
+          <p class="image-column-caption">{displayCaption || caption || ''}</p>
+        )}
+      </>
     )}
   </div>
 </aside>
@@ -143,6 +168,13 @@ const optimizedScrollImages = useScrollImages && scrollImages ? await Promise.al
     object-fit: cover;
   }
 
+  .image-column-scroll-desktop {
+    display: block;
+  }
+  .image-column-scroll-mobile {
+    display: none;
+  }
+
   .image-column-caption {
     font-family: 'Libre Baskerville', serif;
     font-size: 0.875rem;
@@ -161,9 +193,26 @@ const optimizedScrollImages = useScrollImages && scrollImages ? await Promise.al
     opacity: 1;
   }
 
+  .image-column-stack-item {
+    margin-bottom: 2rem;
+  }
+  .image-column-stack-item:last-child {
+    margin-bottom: 0;
+  }
+
   @media (max-width: 900px) {
     .image-column {
+      order: 3;
+      padding: 2rem 1rem 3rem;
+    }
+    .image-column-inner {
+      position: static;
+    }
+    .image-column-scroll-desktop {
       display: none;
+    }
+    .image-column-scroll-mobile {
+      display: block;
     }
   }
 </style>

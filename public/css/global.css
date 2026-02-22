@@ -95,12 +95,20 @@ main {
 @media (max-width: 900px) {
   body.three-column-layout .layout-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  body.three-column-layout .layout-grid .main-column {
+    order: 2;
+  }
+
+  body.three-column-layout .layout-grid .image-column {
+    order: 3;
   }
 
   body.three-column-layout .main-column {
-    padding: 1.5rem 2rem;
-    padding-bottom: 200px;
+    padding: 1.5rem 1rem;
+    padding-bottom: 1.5rem;
   }
 }
 
@@ -281,6 +289,13 @@ nav {
 
 .nav-logo-link {
   text-decoration: none;
+}
+
+/* Ensure folly icon is green and sized correctly on all viewports (sidebar logo from child component doesn't get Astro scope) */
+.sidebar-logo-img {
+  width: 36px;
+  height: auto;
+  filter: brightness(0) saturate(100%) invert(8%) sepia(95%) saturate(1352%) hue-rotate(88deg) brightness(94%) contrast(101%);
 }
 
 .nav-logo {
