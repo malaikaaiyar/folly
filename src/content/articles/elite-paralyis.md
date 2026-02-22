@@ -1,7 +1,7 @@
 ---
 title: "Elite Paralysis"
 author: "Charlie Goldberg"
-category: "Editor's Note"
+category: "Editor's note"
 published: true
 pubDate: 2025-03-08
 volume: 1
