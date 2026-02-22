@@ -7,7 +7,7 @@ pubDate: 2025-03-08
 volume: 1
 image: '/images/zander-grandfather.png'
 imageCaption: 'Illustration by Zander Fitzgerald'
-description: "A poem"
+description: ""
 ---
 
 1\.
