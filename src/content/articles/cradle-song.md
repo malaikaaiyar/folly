@@ -5,9 +5,9 @@ category: "Poetry"
 published: true
 pubDate: 2026-02-18
 volume: 2
-# image: '/images/cartoon-geo.png'
-# imageCaption: 'Illustration by Zander Fitzgerald'
-description: "after Ptolemy’s <em>Prima Europa tabula</em>"
+image: '/images/prima-europa.jpg'
+imageCaption: 'Prima Europe Tabula by Lienhart Holle (1482)'
+description: "<span class='roman'>after Ptolemy’s</span> Prima Europa tabula"
 ---
 
 The top-sky there is well-managed: <br>

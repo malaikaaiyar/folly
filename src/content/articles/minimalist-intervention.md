@@ -5,10 +5,11 @@ category: "Editor's note"
 published: true
 pubDate: 2026-02-18
 volume: 2
-# image: '/images/cartoon-geo.png'
-# imageCaption: 'Illustration by Zander Fitzgerald'
+image: '/images/minimalist-editorial.png'
+imageCaption: 'Illustration by Emilia Mason'
 description: "What happened since the first volume of Folly came out? The editors, fanned out across the globe, asked ourselves this while sitting down to lay-in the latest volume, the volume sitting in your hand or on your screen at this very moment. 
 "
+pageDescription: ""
 ---
 
 What happened since the first volume of Folly came out? The editors, fanned out across the globe, asked ourselves this while sitting down to lay-in the latest volume, the volume sitting in your hand or on your screen at this very moment. 

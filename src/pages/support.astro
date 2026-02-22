@@ -5,8 +5,8 @@ import { site } from "../site"
 
 <Layout title={site.pages.support.title} desc={site.pages.support.description}>
   <div class="support-page">
-    <div class="support-container">
-      <h1 class="support-title">Apply</h1>
+    <div class="content-container">
+      <h2 class="page-title">Apply</h2>
       
       <div class="section">
         <div class="section-divider"></div>
@@ -42,24 +42,6 @@ import { site } from "../site"
 <style>
   .support-page {
     background: var(--light);
-    min-height: 100vh;
-    padding: 2rem 0;
-  }
-
-  .support-container {
-    max-width: 70rem;
-    margin: 0 auto;
-    padding: 0 3rem;
-  }
-
-  .support-title {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 5rem;
-    font-weight: 400;
-    text-align: center;
-    color: var(--dark);
-    margin: 0 0 4rem 0;
-    line-height: 1;
   }
 
   .section {
@@ -70,15 +52,15 @@ import { site } from "../site"
   .section-divider {
     width: 100%;
     height: 3px;
-    background: var(--accent);
+    background: var(--dark);
     margin-bottom: 1rem;
   }
 
   .section-title {
-    font-family: 'Alata', sans-serif;
+    font-family: 'Libre Baskerville', serif;
     font-size: 1.25rem;
     font-weight: 400;
-    color: var(--accent);
+    color: var(--dark);
     margin: 0 0 2rem 0;
     line-height: 1;
   }
@@ -88,8 +70,6 @@ import { site } from "../site"
     font-size: 1rem;
     line-height: 1.6;
     color: var(--dark);
-    max-width: 744px;
-    text-align: justify;
     margin: 0;
   }
 
@@ -99,21 +79,8 @@ import { site } from "../site"
     transition: opacity 0.2s;
   }
 
-  .section-content a:hover {
-    color: var(--accent);
-  }
-
-  @media (max-width: 80rem) {
-    .support-container {
-      padding: 0 1rem;
-    }
-  }
 
   @media (max-width: 768px) {
-    .support-title {
-      font-size: 3rem;
-    }
-    
     .section {
       margin-bottom: 3rem;
     }

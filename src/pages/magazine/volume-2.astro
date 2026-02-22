@@ -1,0 +1,9 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MagazineSection from "../../components/MagazineSection.astro";
+import { site } from "../../site";
+---
+
+<Layout title="Volume 2" desc={site.pages.magazine.description} noImageFallback>
+  <MagazineSection volume={2} />
+</Layout>

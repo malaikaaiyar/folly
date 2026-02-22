@@ -13,7 +13,12 @@ const articlesCollection = defineCollection({
     volume: z.coerce.number().default(1),
     image: z.string().optional(), // Optional image path for sidebar
     imageCaption: z.string().optional(), // Optional image caption
-    description: z.string().optional(), // Description for article preview
+    scrollImages: z.array(z.object({
+      image: z.string(),
+      caption: z.string().optional(),
+    })).optional(), // Multiple images that appear as user scrolls (replaces single image)
+    description: z.string().optional(), // Optional excerpt for listing pages (index, volumes)
+    pageDescription: z.string().optional(), // Italicised description on the article page; defaults to description if unset
   }),
 });
 

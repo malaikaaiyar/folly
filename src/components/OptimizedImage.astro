@@ -1,0 +1,31 @@
+---
+/**
+ * OptimizedImage - Wraps Astro's Image component for public folder images.
+ * Provides WebP/AVIF conversion, lazy loading, and proper dimensions.
+ * Use for images in public/ that need optimization.
+ */
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  class?: string;
+  /** Use for above-the-fold images (e.g. hero) to load eagerly */
+  priority?: boolean;
+}
+
+const { src, alt, width, height, class: className, priority } = Astro.props;
+---
+
+<Image
+  src={src}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={priority ? 'eager' : 'lazy'}
+  decoding="async"
+  fetchpriority={priority ? 'high' : 'auto'}
+/>

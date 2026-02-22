@@ -21,13 +21,7 @@ const related = await getEntries(page.data.relatedArticles);
 ---
 <Layout title={page.data.title} desc={page.data.description}>
    <article>
-  <div class="tags-list">
-  {
-    page.data.tags.map(tag => (
-    <Tag title={tag} />
-    ))
-  }
-  </div>
+
     <Header 
       title={page.data.title}
       description={page.data.description}
@@ -35,14 +29,5 @@ const related = await getEntries(page.data.relatedArticles);
       created={page.data.created.toISOString().slice(0, 10)}
       updated={page.data.updated.toISOString().slice(0, 10)} />
     <Content />
-
-  <div class="related">
-    <h2 class="related-title">You might also like:</h2>
-    <ul class="related-list">
-    {related.map(p => (
-        <li class="related-list-item"><a class="related-link" target="_blank" href={p.slug}>{p.data.title}</a></li>
-        ))}
-    </ul>
-  </div>
  </article>
 </Layout>

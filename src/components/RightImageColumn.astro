@@ -1,0 +1,169 @@
+---
+import { Image, getImage } from 'astro:assets';
+
+interface ScrollImage {
+  image: string;
+  caption?: string;
+}
+
+interface Props {
+  image?: string;
+  alt?: string;
+  caption?: string;
+  scrollImages?: ScrollImage[];
+  /** When true, caption is hidden until hover over the image column (home page only) */
+  captionRevealOnHover?: boolean;
+}
+
+const { image, alt = "Page illustration", caption, scrollImages, captionRevealOnHover } = Astro.props;
+const useScrollImages = scrollImages && scrollImages.length > 0;
+const displayImage = useScrollImages ? scrollImages[0].image : image;
+const displayCaption = useScrollImages ? scrollImages[0].caption : caption;
+
+// Right column displays at max 480px wide - use these dimensions for optimization
+const IMG_WIDTH = 480;
+const IMG_HEIGHT = 640;
+
+// Optimize scroll images for the data attribute (script swaps between these URLs)
+const optimizedScrollImages = useScrollImages && scrollImages ? await Promise.all(
+  scrollImages.map(async (s) => {
+    const opt = await getImage({
+      src: s.image,
+      width: IMG_WIDTH,
+      height: IMG_HEIGHT,
+      format: 'webp',
+    });
+    return { image: opt.src, caption: s.caption ?? '' };
+  })
+) : undefined;
+
+---
+
+<aside class="image-column" id="image-column" class:list={captionRevealOnHover ? ["caption-reveal-on-hover"] : []}>
+  <div class="image-column-inner">
+    {useScrollImages && displayImage && (
+      <img
+        id="scrollable-image"
+        src={optimizedScrollImages![0].image}
+        alt={alt}
+        width={IMG_WIDTH}
+        height={IMG_HEIGHT}
+        class="image-column-img"
+        loading="lazy"
+        decoding="async"
+        data-scroll-images={JSON.stringify(optimizedScrollImages)}
+      />
+    )}
+    {!useScrollImages && (displayImage || image) && (
+      <Image
+        src={displayImage || image!}
+        alt={alt}
+        width={IMG_WIDTH}
+        height={IMG_HEIGHT}
+        class="image-column-img"
+        loading="lazy"
+        decoding="async"
+      />
+    )}
+    {(useScrollImages || displayCaption || caption) && (displayImage || image) && (
+      <p class="image-column-caption" id="scrollable-caption">{displayCaption || caption || ''}</p>
+    )}
+  </div>
+</aside>
+
+{useScrollImages && (
+  <script is:inline>
+    function initScrollImages() {
+      const img = document.getElementById('scrollable-image');
+      const captionEl = document.getElementById('scrollable-caption');
+      const data = img && img.getAttribute('data-scroll-images');
+      if (!img || !data) return;
+
+      var items;
+      try { items = JSON.parse(data); } catch (e) { return; }
+      if (!items || items.length <= 1) return;
+
+      var currentIndex = -1;
+      function updateImage(index) {
+        index = Math.min(Math.max(0, index), items.length - 1);
+        if (index === currentIndex) return;
+        currentIndex = index;
+        var item = items[index];
+        img.src = item.image;
+        if (captionEl) {
+          captionEl.textContent = item.caption || '';
+          captionEl.style.display = item.caption ? 'block' : 'none';
+        }
+      }
+
+      function onScroll() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var scrollHeight = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight
+        ) - window.innerHeight;
+        if (scrollHeight <= 0) return;
+        var progress = Math.min(scrollTop / scrollHeight, 1);
+        var index = Math.min(Math.floor(progress * items.length), items.length - 1);
+        updateImage(index);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollImages);
+    } else {
+      initScrollImages();
+    }
+  </script>
+)}
+
+<style>
+  .image-column {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3rem;
+    background: var(--light);
+  }
+
+  .image-column-inner {
+    position: sticky;
+    top: 3rem;
+    max-width: 100%;
+  }
+
+  .image-column-img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .image-column-caption {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.875rem;
+    font-style: italic;
+    color: var(--dark);
+    margin: 0.75rem 0 0 0;
+    line-height: 1.4;
+  }
+
+  /* Home page: caption hidden until hover over image column */
+  .image-column.caption-reveal-on-hover .image-column-caption {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .image-column.caption-reveal-on-hover:hover .image-column-caption {
+    opacity: 1;
+  }
+
+  @media (max-width: 900px) {
+    .image-column {
+      display: none;
+    }
+  }
+</style>

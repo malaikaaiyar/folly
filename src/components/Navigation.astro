@@ -1,10 +1,11 @@
 ---
 import { site } from "../site"
+import OptimizedImage from "./OptimizedImage.astro"
 ---
 
 <nav id="main-nav">
   <a href="/" class="nav-logo-link">
-    <img src="/images/folly-logo-figma.png" alt="Folly Logo" class="nav-logo" />
+    <OptimizedImage src="/images/folly-logo-figma.png" alt="Folly Logo" class="nav-logo" width={72} height={72} />
   </a>
   <div class="nav-links">
     {

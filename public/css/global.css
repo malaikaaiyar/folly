@@ -1,5 +1,5 @@
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alata:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 *,
 *::before,
@@ -27,7 +27,7 @@
   --border: 1px solid var(--dark);
 
   --font-s: 0.7rem;
-  --font-m: 0.9rem;
+  --font-m: 1rem;
   --font-l: 1.625rem;
 
   --padding-button: 0.25rem 0.8rem;
@@ -55,14 +55,21 @@ html {
 
 body {
   min-height: 100vh;
-  display: flex;
-  gap: 4rem;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: auto;
-  padding: 1rem;
-  padding-top: 6rem; /* Account for fixed navigation */
+  margin: 0;
+  padding: 0;
   color: var(--dark);
+}
+
+body.three-column-layout .layout-grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) minmax(320px, 1fr) minmax(360px, 480px);
+  min-height: 100vh;
+}
+
+body.three-column-layout .main-column {
+  overflow-y: auto;
+  padding: 3rem 3rem;
+  min-width: 0;
 }
 
 main {
@@ -70,6 +77,53 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+/* Shrink image column before stacking – prioritise main content */
+@media (max-width: 1100px) {
+  body.three-column-layout .layout-grid {
+    grid-template-columns: minmax(180px, 220px) minmax(320px, 1fr) minmax(200px, 280px);
+  }
+}
+
+@media (max-width: 1000px) {
+  body.three-column-layout .layout-grid {
+    grid-template-columns: minmax(160px, 200px) minmax(280px, 1fr) minmax(160px, 220px);
+  }
+}
+
+@media (max-width: 900px) {
+  body.three-column-layout .layout-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  body.three-column-layout .main-column {
+    padding: 1.5rem 2rem;
+    padding-bottom: 200px;
+  }
+}
+
+.page-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: calc(clamp(2rem, 3vw, 3rem));
+  font-weight: 400;
+  color: var(--dark);
+  margin: 0 0 1.5rem 0;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    margin-top: 1rem;
+    font-size: calc(2.5rem);
+  }
+}
+
+.content-container {
+  max-width: 680px;
+  margin-bottom: 100px;
+  /* margin: 0 auto; */
 }
 
 .w-80 {
@@ -127,11 +181,11 @@ time {
 a {
   color: var(--dark);
   text-decoration: underline;
+  transition: opacity 0.2s ease;
 }
 
 a:hover {
-  color: var(--accent);
-  text-decoration: none;
+  opacity: 0.8;
 }
 
 article {
@@ -220,32 +274,9 @@ header {
     }
   }
 }
+/* Legacy nav styles — kept for any standalone nav usage */
 nav {
-  width: 100%;
-  max-width: 70rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 1.5rem 3rem;
-  font-family: 'Alata', sans-serif;
-  z-index: 1000;
-}
-
-nav::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--light), transparent);
-  z-index: -1;
-  pointer-events: none;
+  font-family: 'Libre Baskerville', serif;
 }
 
 .nav-logo-link {
@@ -254,12 +285,11 @@ nav::before {
 
 .nav-logo {
   width: 30px;
-  /* height: 59px; */
-  filter: brightness(0) saturate(100%) invert(8%) sepia(95%) saturate(1352%) hue-rotate(88deg) brightness(94%) contrast(101%); /* Makes it dark green var(--dark) */
+  filter: brightness(0) saturate(100%) invert(8%) sepia(95%) saturate(1352%) hue-rotate(88deg) brightness(94%) contrast(101%);
 }
 
 .nav-logo:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .nav-links {
@@ -274,10 +304,9 @@ nav::before {
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  opacity: 0.8;
 }
 
-/* Footer styles are now handled in Footer.astro component */
 
 .card {
   padding: var(--space-m);
@@ -376,36 +405,12 @@ nav::before {
 }
 
 @media (max-width: 80rem) {
-  body {
-    padding: var(--space-s);
-    padding-top: 6rem;
-  }
-  
-    nav {
-    padding: 1.5rem 2rem;
-    font-size: 0.9rem;
-    max-width: none;
-    left: 0;
-    transform: none;
-  }
-
-  
-  .nav-logo {
-    width: 36px;
-    height: 46px;
-  }
-  
   .nav-links {
     gap: 1.5rem;
   }
 }
 
 @media (max-width: 40rem) {
-  body {
-    padding: var(--space-s);
-    padding-top: 5rem;
-    gap: 2rem;
-  }
 
   .hero-title {
     font-size: 6rem;
@@ -443,7 +448,7 @@ nav::before {
 
   article {
     max-width: 100%;
-    padding: 0 var(--space-s);
+    /* padding: 0 var(--space-s); */
   }
 
   .cards-featured-grid {

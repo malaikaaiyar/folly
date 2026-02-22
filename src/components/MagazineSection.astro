@@ -1,221 +1,87 @@
 ---
 import { getCollection } from "astro:content";
 import { formatTitle } from "../utils.js";
+import { site } from "../site";
 
-// Get all published articles
-const allArticles = await getCollection("articles", ({ data }) => {
-  return data.published == true;
-});
-
-// Helper to group a set of articles by category and sort
-function groupByCategory(articles) {
-  const sortedArticles = [...articles].sort((a, b) => {
-    const categoryComparison = a.data.category.localeCompare(b.data.category);
-    if (categoryComparison !== 0) return categoryComparison;
-    return a.data.title.localeCompare(b.data.title);
-  });
-
-  const articlesByCategory = sortedArticles.reduce((acc, article) => {
-    const category = article.data.category;
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-    acc[category].push(article);
-    return acc;
-  }, {});
-
-  const categories = Object.keys(articlesByCategory).sort();
-  if (categories.includes("Editor's Note")) {
-    categories.splice(categories.indexOf("Editor's Note"), 1);
-    categories.unshift("Editor's Note");
-  }
-
-  return { articlesByCategory, categories };
+interface Props {
+  volume: 1 | 2;
 }
 
-// Split articles by volume (volume defaults to 1 in schema)
-const volume1Articles = allArticles.filter(
-  (article) => article.data.volume === 1
-);
-const volume2Articles = allArticles.filter(
-  (article) => article.data.volume === 2
-);
+const { volume } = Astro.props;
 
-const {
-  articlesByCategory: volume1ArticlesByCategory,
-  categories: volume1Categories
-} = groupByCategory(volume1Articles);
+const volumeConfig = {
+  1: { title: "Volume 1", date: "5 May 2025" },
+  2: { title: "Volume 2", date: "1 February 2026" },
+};
 
-const {
-  articlesByCategory: volume2ArticlesByCategory,
-  categories: volume2Categories
-} = groupByCategory(volume2Articles);
+const allArticles = await getCollection("articles", ({ data }) => data.published === true);
+const volumeArticles = allArticles.filter((a) => a.data.volume === volume);
+
+const order = site.volumeOrder?.[volume] ?? [];
+const articles = volumeArticles.sort((a, b) => {
+  const aIdx = order.indexOf(a.slug);
+  const bIdx = order.indexOf(b.slug);
+  if (aIdx === -1 && bIdx === -1) return a.data.title.localeCompare(b.data.title);
+  if (aIdx === -1) return 1;
+  if (bIdx === -1) return -1;
+  return aIdx - bIdx;
+});
+
+const config = volumeConfig[volume];
 ---
 
 <div class="magazine-content">
-  <div class="magazine-container">
-    <div class="magazine-header">
-      <h1 class="issue-title">Volume 2</h1>
-      <time class="issue-date">1 February 2026</time>
+  <div class="content-container">
+    <div class="volume-header">
+      <h2 class="page-title page-title--with-subtitle">{config.title}</h2>
+      <!-- <p class="volume-date">{config.date}</p> -->
     </div>
-
-    <div class="articles-container">
-      {volume2Categories.map((category) => (
-        <div class="category-section">
-          <div class="category-header">
-            <div class="category-divider"></div>
-            <span class="category-tag">{category}</span>
-          </div>
-          
-          <div class="articles-list">
-            {volume2ArticlesByCategory[category].map((article) => (
-              <article class="article-preview">
-                <h3 class="article-title">
-                  <a href={`/articles/${article.slug}`} set:html={formatTitle(article.data.title)}>
-                  </a>
-                </h3>
-                <p class="article-author">{article.data.author}</p>
-                {article.data.description && (
-                  <p
-                    class="article-excerpt"
-                    set:html={article.data.description}
-                  ></p>
-                )}
-              </article>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <div class="magazine-header magazine-header--volume1">
-      <h1 class="issue-title">Volume 1</h1>
-      <time class="issue-date">5 May 2025</time>
-    </div>
-
-    <div class="articles-container">
-      {volume1Categories.map((category) => (
-        <div class="category-section">
-          <div class="category-header">
-            <div class="category-divider"></div>
-            <span class="category-tag">{category}</span>
-          </div>
-          
-          <div class="articles-list">
-            {volume1ArticlesByCategory[category].map((article) => (
-              <article class="article-preview">
-                <h3 class="article-title">
-                  <a href={`/articles/${article.slug}`} set:html={formatTitle(article.data.title)}>
-                  </a>
-                </h3>
-                <p class="article-author">{article.data.author}</p>
-                {article.data.description && (
-                  <p
-                    class="article-excerpt"
-                    set:html={article.data.description}
-                  ></p>
-                )}
-              </article>
-            ))}
-          </div>
-        </div>
+    <div class="articles-preview">
+      {articles.map((article) => (
+        <article class="article-preview">
+          <h2 class="article-title">
+            <a href={`/articles/${article.slug}`} set:html={formatTitle(article.data.title)}></a>
+          </h2>
+          <p class="article-meta">{article.data.author} | {article.data.category}</p>
+          {article.data.description && (
+            <p class="article-excerpt" set:html={article.data.description} />
+          )}
+        </article>
       ))}
     </div>
   </div>
 </div>
+
 <style>
   .magazine-content {
     background: var(--light);
     color: var(--dark);
-    padding: 2rem 0;
-    min-height: 100vh;
   }
 
-  .magazine-container {
-    max-width: 70rem;
-    margin: 0 auto;
-    padding: 0 3rem;
+  .volume-header {
+    margin-bottom: 3rem;
   }
 
-  .magazine-header {
-    text-align: center;
-    margin-bottom: 4rem;
-    padding-top: 3rem;
+  .page-title--with-subtitle {
+    margin-bottom: 0.25rem;
   }
 
-  .magazine-header--volume1 {
-    margin-top: 15rem;
-  }
-
-  .issue-title {
+  .volume-date {
     font-family: 'Libre Baskerville', serif;
-    font-size: 5rem;
-    font-weight: 400;
-    margin: 0 0 1rem 0;
-    line-height: 1;
-  }
-
-  .issue-date {
-    font-family: 'Libre Baskerville', serif;
-    font-style: italic;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--dark);
+    opacity: 0.9;
+    margin: 0;
   }
 
-  .articles-container {
-    max-width: 70rem;
-    margin: 0 auto;
-  }
-
-  .category-section {
-    margin-bottom: 4rem;
-  }
-
-  .category-header {
-    margin-bottom: 2rem;
-    position: relative;
+  .articles-preview {
     display: flex;
     flex-direction: column;
-  }
-
-  .category-divider {
-    width: 100%;
-    height: 3px;
-    background: var(--accent);
-    margin-bottom: 1rem;
-  }
-
-  .category-tag {
-    font-family: 'Alata', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: var(--accent);
-    display: inline-block;
-  }
-
-  .articles-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    margin-top: 2rem;
-    align-items: start;
-  }
-
-  @media (min-width: 768px) {
-    .articles-list {
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem 3rem;
-      align-items: start;
-    }
+    gap: 2.5rem;
   }
 
   .article-preview {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    align-self: start;
-    height: fit-content;
+    max-width: 100%;
   }
 
   .article-title {
@@ -223,101 +89,36 @@ const {
     font-size: 2rem;
     font-weight: 400;
     line-height: 1.2;
-    margin: 0 0 0.5rem 0;
-    position: relative;
+    margin: 0 0 0.25rem 0;
   }
 
   .article-title a {
     color: var(--dark);
     text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline;
-    align-items: center;
-    gap: 0.5rem;
   }
 
-  .article-title a::after {
-    content: '→';
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: all 0.3s ease;
-    color: var(--accent);
-    font-size: 0.8em;
-  }
 
-  .article-title a:hover {
-    color: var(--accent);
-    transform: translateX(8px);
-  }
-
-  .article-title a:hover::after {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  /* Desktop title styling - show by default */
-  .article-title .desktop-title {
-    display: inline-flex;
-  }
-
-  /* Mobile-only title styling - hide by default */
-  .article-title .mobile-only-title {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    .article-title .desktop-title {
-      display: none;
-    }
-    
-    .article-title .mobile-only-title {
-      display: inline-flex;
-    }
-  }
-
-  .article-author {
+  .article-meta {
     font-family: 'Libre Baskerville', serif;
+    font-size: 1.3rem;
     font-style: italic;
-    font-size: 1rem;
     color: var(--dark);
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.5rem 0;
   }
 
   .article-excerpt {
-    font-family: 'Libre Baskerville', serif;
+    font-family: "Standard", sans-serif;
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--dark);
     margin: 0;
-    text-align: justify;
-    white-space: pre-line;
-  }
-
-  @media (max-width: 80rem) {
-    .magazine-container {
-      padding: 0 1rem;
-    }
+    overflow: visible;
+    white-space: normal;
   }
 
   @media (max-width: 768px) {
-    .magazine-container {
-      padding: 0 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .magazine-container {
-      padding: 0 0.75rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .issue-title {
-      font-size: 3rem;
-    }
-
     .article-title {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
   }
-</style> 
+</style>

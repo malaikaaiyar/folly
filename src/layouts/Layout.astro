@@ -1,31 +1,47 @@
 ---
-import Navigation from "../components/Navigation.astro"
-import Footer from "../components/Footer.astro"
+import LeftSidebar from "../components/LeftSidebar.astro"
+import RightImageColumn from "../components/RightImageColumn.astro"
 import { site } from "../site"
 
-interface Props {
-	title: string;
-	desc: string;
-  hideFooter?: boolean;
+interface ScrollImage {
+  image: string;
+  caption?: string;
 }
 
-const { title, desc, hideFooter } = Astro.props;
+interface Props {
+  title: string;
+  desc: string;
+  rightColumnImage?: string;
+  rightColumnCaption?: string;
+  rightColumnScrollImages?: ScrollImage[];
+  /** When true, no fallback image is used—pieces without an image show none */
+  noImageFallback?: boolean;
+  /** When true, caption is hidden until hover over the image column */
+  captionRevealOnHover?: boolean;
+}
+
+const { title, desc, rightColumnImage, rightColumnCaption, rightColumnScrollImages, noImageFallback, captionRevealOnHover } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const imageFromConfig = site.pageImages?.[pathname] ?? site.pageImages?.[pathname.replace(/\/$/, "")] ?? site.pageImages?.["/"];
+const rightImage = noImageFallback
+  ? rightColumnImage
+  : (rightColumnImage ?? imageFromConfig ?? "/images/fin.png");
 ---
 
 <!doctype html>
 <html lang="en">
- <head>
-
+  <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/images/folly-transparent.png" />
     <meta name="description" content={desc} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={desc} />
-		<meta name="author" content={site.author} />
+    <meta name="author" content={site.author} />
 
     <link rel="stylesheet" href="/css/global.css" />
-		<link rel="preconnect" href="https://rsms.me/">
-		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="/styles/footnotes.css">
 
     <meta property="og:type" content="website" />
@@ -35,16 +51,16 @@ const { title, desc, hideFooter } = Astro.props;
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={desc} />
-		
-   
-		<title>{title} | {site.title}</title>
-  </head>
-	<body>
-    <Navigation />
-		<main>
-			<slot />
-		</main>
-    {hideFooter ? null : <Footer />}
-	</body>
-</html>
 
+    <title>{title} | {site.title}</title>
+  </head>
+  <body class="three-column-layout">
+    <div class="layout-grid">
+      <LeftSidebar />
+      <main class="main-column">
+        <slot />
+      </main>
+      <RightImageColumn image={rightImage} caption={rightColumnCaption} scrollImages={rightColumnScrollImages} captionRevealOnHover={captionRevealOnHover} />
+    </div>
+  </body>
+</html>

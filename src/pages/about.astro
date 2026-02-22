@@ -5,27 +5,18 @@ import { site } from "../site"
 
 <Layout title={site.pages.about.title} desc={site.pages.about.description}>
   <div class="about-page">
-    <div class="about-container">
-      <h1 class="about-title">About</h1>
+    <div class="content-container">
+      <h2 class="page-title">About</h2>
+      <p class="section-content">
+        Founded in Spring 2025, <i>Folly</i> publishes long-form essays, fiction, cultural criticism, and analysis. We aim to build a place at Oxford to provide space and time to think creatively and always critically. We publish termly.
+      </p>
       
+      
+      <p class="section-content">
+        Submissions and pitches are accepted year-round. We seek to publish sharp analyses of global politics; wide-ranging and curious criticism; interviews with thinkers and writers; surreal, erudite fiction; translated and original poetry; and work that teases apart the conjuncture. Send your submissions to us <a href="https://docs.google.com/forms/d/e/1FAIpQLSdueV8E5ey7ptToiZN0zclpJRoDj_fZ8L4boZ-wTNCE570OaQ/viewform?usp=dialog" target="_blank">here</a>.
+      </p>
+    
       <div class="section">
-        <div class="section-divider"></div>
-        <h2 class="section-title">Info</h2>
-        <p class="section-content">
-          Founded in Spring 2025, <i>Folly</i> publishes long-form essays, fiction, cultural criticism, and analysis. We aim to build a place at Oxford to provide space and time to think creatively and always critically. We publish termly. 
-        </p>
-      </div>
-
-      <div class="section">
-        <div class="section-divider"></div>
-        <h2 class="section-title">Submissions</h2>
-        <p class="section-content">
-          Submissions and pitches are accepted year-round. We seek to publish sharp analysis of global politics, wide-ranging and curious cultural criticism, interviews with thinkers and writers, brave, surreal, and erudite fiction, translated and original poetry and work that teases apart the conjuncture. Send your submissions to us <a href="https://docs.google.com/forms/d/e/1FAIpQLSdueV8E5ey7ptToiZN0zclpJRoDj_fZ8L4boZ-wTNCE570OaQ/viewform?usp=dialog" target="_blank">here</a>.
-        </p>
-      </div>
-
-      <div class="section">
-        <div class="section-divider"></div>
         <h2 class="section-title">Masthead</h2>
         <div class="masthead-content">
           <div class="masthead-entry">
@@ -66,41 +57,12 @@ import { site } from "../site"
         </div>
       </div>
     
-
-
-      <!-- <div class="section">
-        <div class="section-divider"></div>
-        <h2 class="section-title">Join the team</h2>
-        <p class="section-content">
-          We’re looking for editors, designers, and people interested in helping us throw great events. Please fill out this form if you’re interested.
-        </p>
-      </div>
-    </div> -->
   </div>
 </Layout>
 
 <style>
   .about-page {
     background: var(--light);
-    min-height: 100vh;
-    padding: 2rem 0;
-  }
-
-  .about-container {
-    max-width: 70rem;
-    margin: 0 auto;
-    padding: 0 3rem;
-  }
-
-  .about-title {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 5rem;
-    font-weight: 400;
-    text-align: center;
-    color: var(--dark);
-    margin: 0 0 4rem 0;
-    padding-top: 3rem;
-    line-height: 1;
   }
 
   .section {
@@ -111,30 +73,39 @@ import { site } from "../site"
   .section-divider {
     width: 100%;
     height: 3px;
-    background: var(--accent);
+    background: var(--dark);
     margin-bottom: 1rem;
   }
 
   .section-title {
-    font-family: 'Alata', sans-serif;
+    font-family: 'Standard', sans-serif;
     font-size: 1.25rem;
     font-weight: 400;
-    color: var(--accent);
+    color: var(--dark);
     margin: 0 0 2rem 0;
     line-height: 1;
   }
 
   .section-content {
-    font-family: 'Libre Baskerville', serif;
+    font-family: "Standard", sans-serif;
     font-size: 1rem;
     line-height: 1.6;
     color: var(--dark);
-    text-align: justify;
-    margin: 0;
+    margin: 0 0 1.875rem 0;
   }
 
+  .section-content:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-content a,
+  .masthead-content a {
+    color: var(--dark);
+  }
+
+
   .masthead-content {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Standard', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
     color: var(--dark);
@@ -144,7 +115,8 @@ import { site } from "../site"
     display: flex;
     align-items: baseline;
     margin-bottom: 0.625rem;
-    overflow: hidden;
+    /* overflow: hidden; */
+    /* margin-left: 0.5rem; */
   }
 
   .masthead-entry:last-child {
@@ -169,31 +141,17 @@ import { site } from "../site"
     font-style: italic;
   }
 
-  @media (max-width: 80rem) {
-    .about-container {
-      padding: 0 1rem;
-    }
-  }
-
   @media (max-width: 768px) {
-    .about-container {
-      padding: 0 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .about-container {
-      padding: 0 0.75rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .about-title {
-      font-size: 3rem;
-    }
-    
     .section {
       margin-bottom: 3rem;
+    }
+
+    .section-content {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-content:last-child {
+      margin-bottom: 0;
     }
     
     .masthead-entry {
@@ -209,6 +167,16 @@ import { site } from "../site"
     
     .name, .role {
       flex-shrink: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-content {
+      margin-bottom: 1.25rem;
+    }
+
+    .section-content:last-child {
+      margin-bottom: 0;
     }
   }
 </style>

@@ -7,9 +7,8 @@ pubDate: 2026-02-18
 volume: 2
 # image: '/images/cartoon-geo.png'
 # imageCaption: 'Illustration by Zander Fitzgerald'
-description: "Only four were awake on the night of the Dupont disaster, but even by their own
-accounts they could hardly have been called witnesses. It happened in dead silence. The fog had crept quietly in the heat and settled thick onto our sleeping houses. There was no air traffic control back then, only a loose rigging of wires that ricocheted radio signals across the Atlantic, just offshore of the Cape. The few who stood sentinel in the immediate aftermath of the tragedy did so only by causal circumstance. 
-"
+description: 'It felt reasonable – likely, even – that a small chunk of the Cessna’s body might wash ashore among the more minute objects: the sand-scraped bottles and fishhooks and driftwood that we would happen upon while traipsing up and down the shore. We knew any piece we might find would be small because our local drunk, Teddy Armstrong, said the plane was “smashed into a million pieces.” Since he was one of the few who were awake that night, he was the closest we could get to a trustworthy source.'
+pageDescription: ""
 ---
 
 Only four were awake on the night of the Dupont disaster, but even by their own
