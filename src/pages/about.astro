@@ -22,7 +22,7 @@ import { site } from "../site"
           <div class="masthead-entry">
             <span class="name">Charlie Goldberg</span>
             <span class="dots"></span>
-            <span class="role">Editor</span>
+            <span class="role">Editor in Chief</span>
           </div>
           <div class="masthead-entry">
             <span class="name">Oscar Luckett</span>
@@ -52,8 +52,29 @@ import { site } from "../site"
 
           <div class="masthead-entry">
 
-          <p class="section-content"> <br><em>Special thanks to <a href="https://marsh.blue" target="_blank">Nick Marsh</a> and Faye Chang (founding editor 2025)</em></p>
+          <p class="section-content"> <br><em>Special thanks to <a href="https://marsh.blue" target="_blank">Nick Marsh</a> and Faye Chang (Founding Editor 2025)</em></p>
           </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Contributing writers</h2>
+        <div class="writers-grid">
+          <span>Ruth Thrush</span>
+          <span>Ben Philipps</span>
+          <span>Pippa Conlon</span>
+          <span>Geo Maur-Batsaki</span>
+          <span>Austin Spendlow</span>
+          <span>Ginger Vidal</span>
+          <span>Faye Chang</span>
+          <span>Olivier Berg</span>
+          <span>Austin Spendlowe</span>
+          <span>Maia Siegel</span>
+          <span>Sarah Simblet</span>
+          <span>Catherine Borthwick</span>
+          <span>Hassan Akram</span>
+          <span>Hannah Wei</span>
+          <span>Lara Machado</span>
         </div>
       </div>
     
@@ -84,6 +105,16 @@ import { site } from "../site"
     color: var(--dark);
     margin: 0 0 2rem 0;
     line-height: 1;
+  }
+
+  .writers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem 2rem;
+    font-family: "Standard", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--dark);
   }
 
   .section-content {
@@ -146,6 +177,10 @@ import { site } from "../site"
       margin-bottom: 3rem;
     }
 
+    .writers-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     .section-content {
       margin-bottom: 1.5rem;
     }
@@ -171,6 +206,10 @@ import { site } from "../site"
   }
 
   @media (max-width: 480px) {
+    .writers-grid {
+      grid-template-columns: 1fr;
+    }
+
     .section-content {
       margin-bottom: 1.25rem;
     }
